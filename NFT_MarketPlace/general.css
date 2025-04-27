@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Gloock&family=Press+Start+2P&display=swap');
+
+/* ====== RESET ====== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: var(--font-pixel);
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+button,
+input {
+    font-family: inherit;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+input {
+    border-bottom: 2px solid var(--extra-color-dark1);
+    padding: var(--spacing-sm);
+}
+
+/* ====== VARIABLES ====== */
+:root {
+    /* Colors */
+    --primary-color-dark: #BC6C25;
+    --secondary-color-dark: #DDA15E;
+    --primary-color-light: #FEFAE0;
+    --background-color-dark: #283618;
+    --background-color-light: #606C38;
+
+    /* Extra Complementary Colors */
+    --extra-color-dark1: #5A3E1B;
+    /* Deep rich brown */
+    --extra-color-dark2: #3E522D;
+    /* Forest moss green */
+    --extra-color-dark3: #7B341E;
+    /* Earthy burnt red */
+
+    /* Extra Light Complementary Colors */
+    --extra-color-light1: #FFF5D6;
+    /* Light sandy beige */
+    --extra-color-light2: #E9EDC9;
+    /* Soft olive-tinged cream */
+    --extra-color-light3: #F6E9B2;
+    /* Soft pastel yellow */
+
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --button-text-color: #ffffff;
+    --border-color: #dddddd;
+
+    /* Font Sizes */
+    --fs-small: 0.875rem;
+    --fs-regular: 1rem;
+    --fs-large: 1.5rem;
+
+    /* Font Family */
+    --font-pixel: 'Press Start 2P', cursive;
+    --font-mideval: 'Gloock', serif;
+    --font-elegant: 'Cinzel', serif;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ====== UTILITIES ====== */
+
+/* Text */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+/* Margin */
+.mt-1 {
+    margin-top: var(--spacing-sm);
+}
+
+.mt-2 {
+    margin-top: var(--spacing-md);
+}
+
+.mt-3 {
+    margin-top: var(--spacing-lg);
+}
+
+.mb-1 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.mb-2 {
+    margin-bottom: var(--spacing-md);
+}
+
+.mb-3 {
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Padding */
+.p-1 {
+    padding: var(--spacing-sm);
+}
+
+.p-2 {
+    padding: var(--spacing-md);
+}
+
+.p-3 {
+    padding: var(--spacing-lg);
+}
+
+/* Flex */
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Width */
+.w-100 {
+    width: 100%;
+}
+
+/* Button */
+.btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--primary-color-dark);
+    color: var(--button-text-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: var(--secondary-color-dark);
+}
+
+/* ==============================================`` Login Page============================================== */
+.Login_Title {
+    font-size: 3rem;
+}
+
+.Login_Body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.Login_BackgroundImage {
+    background-color: var(--primary-color-dark);
+    background: url('/BeginnerLuck_MarketPlace/BegineerLuck_WebDev/NFT_MarketPlace/img/MarketplaceBackground.jpg') no-repeat center center;
+    background-size: cover;
+    filter: blur(8px);
+
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+
+.Login_Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: fit-content;
+
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+
+    background-color: var(--card-background);
+}
+
+.Login_SmallText {
+    font-size: var(--fs-small);
+    color: var(--text-color);
+}
+
+/* ==============================================`` Index Page============================================== */
+
+
+.Homepage_Title {
+
+    font-size: 5rem;
+}
+
+/* ==============================================`` NFT Details Page============================================== */
+/* ==============================================`` Trade History Page============================================== */
+/* ==============================================`` Profile Page============================================== */
