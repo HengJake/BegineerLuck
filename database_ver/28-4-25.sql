@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2025 at 03:57 PM
+-- Generation Time: Apr 28, 2025 at 04:09 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `table`
+-- Table structure for table `faggot`
 --
 
-CREATE TABLE `table` (
+CREATE TABLE `faggot` (
   `1` int(11) NOT NULL,
   `2` int(11) NOT NULL,
   `3` int(11) NOT NULL,
@@ -39,9 +39,9 @@ CREATE TABLE `table` (
 --
 
 --
--- Indexes for table `table`
+-- Indexes for table `faggot`
 --
-ALTER TABLE `table`
+ALTER TABLE `faggot`
   ADD PRIMARY KEY (`1`);
 
 --
@@ -49,9 +49,9 @@ ALTER TABLE `table`
 --
 
 --
--- AUTO_INCREMENT for table `table`
+-- AUTO_INCREMENT for table `faggot`
 --
-ALTER TABLE `table`
+ALTER TABLE `faggot`
   MODIFY `1` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
