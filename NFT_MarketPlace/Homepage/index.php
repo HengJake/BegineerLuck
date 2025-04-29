@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/BeginnerLuck_MarketPlace/BegineerLuck_WebDev/NFT_MarketPlace/general.css">
+    <link rel="stylesheet" href="/BegineerLuck_WebDev/NFT_MarketPlace/general.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <title>Marketplace</title>
 </head>
@@ -17,13 +17,13 @@
             <input type="text" placeholder="Search...">
             <div class="flex">
 
-                <a href="\BeginnerLuck_MarketPlace\BegineerLuck_WebDev\NFT_MarketPlace\ProfilePage\Profile.php">
+                <a href="\BegineerLuck_WebDev\NFT_MarketPlace\ProfilePage\Profile.php">
                     <span class="material-icons-outlined">
                         account_circle
                     </span>
                 </a>
 
-                <a href="\BeginnerLuck_MarketPlace\BegineerLuck_WebDev\NFT_MarketPlace\NFTDetailsPage\NFTDetails.php">
+                <a href="\BegineerLuck_WebDev\NFT_MarketPlace\NFTDetailsPage\NFTDetails.php">
                     <span class="material-icons-outlined">
                         inventory_2
                     </span>

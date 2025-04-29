@@ -194,7 +194,7 @@ ul {
 
 .Login_BackgroundImage {
     background-color: var(--primary-color-dark);
-    background: url('/BeginnerLuck_MarketPlace/BegineerLuck_WebDev/NFT_MarketPlace/img/MarketplaceBackground.jpg') no-repeat center center;
+    background: url('/BegineerLuck_WebDev/NFT_MarketPlace/img/MarketplaceBackground.jpg') no-repeat center center;
     background-size: cover;
     filter: blur(8px);
 
@@ -227,10 +227,22 @@ ul {
     color: var(--text-color);
 }
 
+.error-message {
+    background-color: #e63946;
+    color: white;
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+    border-radius: var(--rd-sm);
+    box-shadow: var(--shadow-sm);
+    font-family: var(--font-pixel);
+}
+
+
 /* ==============================================`` Index Page============================================== */
 
 .Homepage_Background {
-    background: url('/BeginnerLuck_MarketPlace/BegineerLuck_WebDev/NFT_MarketPlace/img/MarketPlaceView.jpg') no-repeat center center;
+    background: url('/BegineerLuck_WebDev/NFT_MarketPlace/img/MarketPlaceView.jpg') no-repeat center center;
     background-size: cover;
     position: absolute;
     top: 0;
