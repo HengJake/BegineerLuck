@@ -25,6 +25,20 @@ input {
     background: none;
 }
 
+button:hover {
+    cursor: pointer;
+    color: var(--extra-color-dark2);
+    background-color: var(--extra-color-light1);
+}
+
+button {
+    transition: all 0.3s ease-in-out;
+    border-radius: var(--rd-sm);
+    padding: var(--spacing-sm);
+    background-color: var(--extra-color-dark2);
+    color: var(--extra-color-light1);
+}
+
 input {
     padding: var(--spacing-sm);
     border-bottom: 1px solid var(--extra-color-dark3);
