@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="\BegineerLuck_WebDev\NFT_MarketPlace\general.css">
+    <link rel="stylesheet" href="/BegineerLuck_WebDev/NFT_MarketPlace/general.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <title>Marketplace</title>
 </head>
@@ -17,10 +17,10 @@
             <h1 class="Homepage_Title">[name] Marketplace</h1>
             <input type="text" placeholder="Search...">
             <div class="flex">
-                <a href="\BegineerLuck_WebDev\NFT_MarketPlace\ProfilePage\Profile.php">
+                <a href="/BegineerLuck_WebDev/NFT_MarketPlace/ProfilePage/Profile.php">
                     <span class="material-icons-outlined">account_circle</span>
                 </a>
-                <a href="\BegineerLuck_WebDev\NFT_MarketPlace\NFTDetailsPage\NFTDetails.php">
+                <a href="/BegineerLuck_WebDev/NFT_MarketPlace/NFTDetailsPage/NFTDetails.php">
                     <span class="material-icons-outlined">inventory_2</span>
                 </a>
             </div>
@@ -44,30 +44,41 @@
 
     <main style="padding: 2rem; display: flex; flex-direction: row; gap: 2rem;">
         <!-- Sidebar -->
-        <aside style="width: 20%; background: rgba(255, 255, 255, 0.7); border-radius: 10px; padding: 1rem;">
+        <aside class="category-panel">
             <h3>Categories</h3>
-            <!-- Future categories here -->
+            <ul>
+                <li class="category" data-type="earth">Earth <span class="status locked">Locked</span></li>
+                <li class="category" data-type="fire">Fire <span class="status unlocked">Unlocked</span></li>
+                <li class="category" data-type="water">Water <span class="status unlocked">Unlocked</span></li>
+                <li class="category" data-type="wind">Wind <span class="status locked">Locked</span></li>
+                <li class="category" data-type="shadow">Shadow <span class="status locked">Locked</span></li>
+                <li class="category" data-type="grass">Grass <span class="status unlocked">Unlocked</span></li>
+                <li class="category" data-type="energy">Energy <span class="status unlocked">Unlocked</span></li>
+            </ul>
         </aside>
 
         <!-- Main Content -->
-        <section style="flex: 1; background: rgba(255, 255, 255, 0.7); border-radius: 10px; padding: 1rem;">
+        <section class="nft-display-panel">
             <!-- Filter buttons -->
-            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-                <button style="padding: 0.5rem 1rem; border: none; background-color: #e63946; color: white; border-radius: 5px;">POPULAR</button>
-                <button style="padding: 0.5rem 1rem; border: none; background-color: #e63946; color: white; border-radius: 5px;">EXPENSIVE</button>
+            <div class="nft-filters">
+                <button class="filter-btn active" data-filter="popular">POPULAR</button>
+                <button class="filter-btn" data-filter="expensive">EXPENSIVE</button>
             </div>
 
-            <!-- Popular NFTs -->
-            <h2 style="margin-bottom: 1rem;">POPULAR NFT</h2>
-
-            <div style="display: flex; gap: 1rem;">
-                <div style="flex: 1; height: 200px; background-color: #f5f5f5; border: 2px solid black; border-radius: 10px;"></div>
-                <div style="flex: 1; height: 200px; background-color: #f5f5f5; border: 2px solid black; border-radius: 10px;"></div>
-                <div style="flex: 1; height: 200px; background-color: #f5f5f5; border: 2px solid black; border-radius: 10px;"></div>
+            <!-- NFT Section -->
+            <h2 class="section-title">POPULAR NFT</h2>
+            <div class="nft-carousel">
+                <div class="nft-card"></div>
+                <div class="nft-card"></div>
+                <div class="nft-card"></div>
+            </div>
+            <div class="nft-carousel-controls">
+                <button id="prev-slide">&#9664;</button>
+                <button id="next-slide">&#9654;</button>
             </div>
         </section>
     </main>
 
+    <script src="index.js"></script>
 </body>
-
 </html>
