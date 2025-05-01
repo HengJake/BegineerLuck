@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `faggot`
+-- Table structure for table `test`
 --
 
-CREATE TABLE `faggot` (
+CREATE TABLE `test` (
   `1` int(11) NOT NULL,
   `2` int(11) NOT NULL,
   `3` int(11) NOT NULL,
@@ -39,9 +39,9 @@ CREATE TABLE `faggot` (
 --
 
 --
--- Indexes for table `faggot`
+-- Indexes for table `test`
 --
-ALTER TABLE `faggot`
+ALTER TABLE `test`
   ADD PRIMARY KEY (`1`);
 
 --
@@ -49,9 +49,9 @@ ALTER TABLE `faggot`
 --
 
 --
--- AUTO_INCREMENT for table `faggot`
+-- AUTO_INCREMENT for table `test`
 --
-ALTER TABLE `faggot`
+ALTER TABLE `test`
   MODIFY `1` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
