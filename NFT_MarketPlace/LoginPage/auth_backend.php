@@ -51,30 +51,58 @@ switch ($action) {
 
     case 'signup':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
             $username = trim($_POST['username']);
+            $email = trim($_POST['email']);
             $password = $_POST['password'];
+            $confirm_password = $_POST['confirm_password'];
+            $wallet_address = trim($_POST['wallet_address'] ?? '');
+            $bio = trim($_POST['bio'] ?? '');
+            $profile_pic_path = null;
 
-            if (empty($username) || empty($password)) {
-                $_SESSION['error'] = "Please fill in all fields.";
+            // Validation
+            if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
+                $_SESSION['error'] = "Please fill in all required fields.";
                 header('Location: Signup.php');
                 exit();
             }
 
-            if (strlen($username) < 4) {
-                $_SESSION['error'] = "Username must be at least 4 characters.";
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $_SESSION['error'] = "Invalid email format.";
                 header('Location: Signup.php');
                 exit();
             }
 
-            if (strlen($password) < 6) {
-                $_SESSION['error'] = "Password must be at least 6 characters.";
+            if ($password !== $confirm_password) {
+                $_SESSION['error'] = "Passwords do not match.";
                 header('Location: Signup.php');
                 exit();
             }
 
+            if (strlen($username) < 4 || strlen($password) < 6) {
+                $_SESSION['error'] = "Username must be ≥ 4 chars and password ≥ 6 chars.";
+                header('Location: Signup.php');
+                exit();
+            }
+
+            // Handle profile picture upload
+            if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] === UPLOAD_ERR_OK) {
+                $target_dir = "uploads/profile_pics/";
+                if (!file_exists($target_dir)) mkdir($target_dir, 0755, true);
+
+                $ext = pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION);
+                $filename = uniqid("pfp_", true) . "." . $ext;
+                $profile_pic_path = $target_dir . $filename;
+
+                move_uploaded_file($_FILES['profile_pic']['tmp_name'], $profile_pic_path);
+            }
+
+            // Hash password
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-            $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+            // Insert into database
+            $sql = "INSERT INTO users (username, email, password_hash, wallet_address, profile_pic, bio) 
+                        VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
 
             if (!$stmt) {
@@ -83,17 +111,17 @@ switch ($action) {
                 exit();
             }
 
-            $stmt->bind_param("ss", $username, $hashed_password);
+            $stmt->bind_param("ssssss", $username, $email, $hashed_password, $wallet_address, $profile_pic_path, $bio);
 
-            if (!$stmt->execute()) {
+            if ($stmt->execute()) {
+                $_SESSION['username'] = $username;
+                header('Location: /BegineerLuck_WebDev/NFT_MarketPlace/Homepage/index.php');
+                exit();
+            } else {
                 $_SESSION['error'] = "Signup failed: " . $stmt->error;
                 header('Location: Signup.php');
                 exit();
             }
-
-            $_SESSION['username'] = $username;
-            header('Location: /BegineerLuck_WebDev/NFT_MarketPlace/Homepage/index.php');
-            exit();
         }
         break;
 
@@ -101,4 +129,3 @@ switch ($action) {
         echo "Invalid action.";
         break;
 }
-?>
