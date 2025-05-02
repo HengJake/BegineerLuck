@@ -25,7 +25,7 @@
             ?>
 
             <!-- === Signup Form === -->
-            <form class="w-100" action="auth_backend.php?action=signup" method="POST">
+            <form class="w-100" action="auth_backend.php?action=signup" method="POST" enctype="multipart/form-data">
                 <p class="Login_SmallText w-100 text-left mb-3">
                     Already have an account? <a href="Login.php">Log In</a>
                 </p>
@@ -33,14 +33,16 @@
                 <div>
                     <input class="w-100 mb-2" type="text" name="username" placeholder="Username" required
                         minlength="3" maxlength="20" pattern="^[a-zA-Z0-9_]+$"
-                        title="Username must be 3-20 characters and contain only letters, numbers, or underscores.">
+                        title="Username must be 3-20 characters and contain only letters, numbers, or underscores."
+                        value="<?php echo $_SESSION['form_data']['username'] ?? ''; ?>">
                 </div>
 
                 <div>
                     <label for="email">Email *</label>
                     <input type="email" id="email" name="email" required
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                        title="Enter a valid email address.">
+                        title="Enter a valid email address."
+                        value="<?php echo $_SESSION['form_data']['email'] ?? ''; ?>">
                 </div>
 
                 <div>
@@ -58,21 +60,26 @@
                 </div>
 
                 <div>
-                    <label for="wallet_address">Wallet Address (optional)</label>
+                    <label for="wallet_address">Wallet Address *</label>
                     <input type="text" id="wallet_address" name="wallet_address"
                         pattern="^0x[a-fA-F0-9]{40}$"
-                        title="Enter a valid Ethereum address starting with 0x and followed by 40 hex characters.">
+                        title="Enter a valid Ethereum address starting with 0x and followed by 40 hex characters."
+                        required
+                        value="<?php echo $_SESSION['form_data']['wallet_address'] ?? ''; ?>">
                 </div>
 
                 <div>
                     <label for="profile_pic">Profile Picture (optional)</label>
                     <input type="file" id="profile_pic" name="profile_pic" accept="image/*">
+                    <?php if (!empty($_SESSION['form_data']['profile_pic'])): ?>
+                        <p>Selected file: <strong><?php echo basename($_SESSION['form_data']['profile_pic']); ?></strong></p>
+                    <?php endif; ?>
                 </div>
 
                 <div>
                     <label for="bio">Bio (optional)</label>
                     <textarea id="bio" name="bio" rows="3" maxlength="300"
-                        placeholder="Tell us about yourself (max 300 characters)..."></textarea>
+                        placeholder="Tell us about yourself (max 300 characters)..."><?php echo $_SESSION['form_data']['bio'] ?? ''; ?></textarea>
                 </div>
 
                 <p class="Login_SmallText mb-3"><a href="#">Forgot Password?</a></p>
@@ -80,11 +87,10 @@
                 <button class="btn w-100" type="submit">Sign Up</button>
             </form>
 
-            
+
+
         </div>
     </div>
-
-
 </body>
 
 </html>
