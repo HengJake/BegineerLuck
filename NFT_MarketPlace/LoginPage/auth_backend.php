@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 
 $servername = "localhost";
@@ -32,7 +36,7 @@ switch ($action) {
             $result = $stmt->get_result();
 
             if ($user = $result->fetch_assoc()) {
-                if (password_verify($password, $user['password'])) {
+                if (password_verify($password, $user['password_hash'])) {
                     $_SESSION['username'] = $username;
                     header('Location: /BegineerLuck_WebDev/NFT_MarketPlace/Homepage/index.php');
                     exit();
