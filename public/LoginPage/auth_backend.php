@@ -63,30 +63,35 @@ switch ($action) {
             $bio = trim($_POST['bio'] ?? '');
             $errors = [];
 
-            // Default profile picture
-            $profile_pic_path = "/BegineerLuck_WebDev/NFT_MarketPlace/img/DefaultPfp.png";
+            // Default profile picture/ handle file upload
+            if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] === UPLOAD_ERR_OK) {
+                $profile_pic = file_get_contents($_FILES['profile_pic']['tmp_name']); // Get binary content
+            } else {
+                $profile_pic = file_get_contents(__DIR__ . "/../../public/img/DefaultPfp.png");
+            }
 
+            echo "<script>window.alert('Please fill in all required fields.');</script>";
             // === Validation ===
             if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
-                $_SESSION['error'] = "Please fill in all required fields.";
+                $errors[] = "Please fill in all required fields.";
                 header('Location: Signup.php');
                 exit();
             }
 
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $_SESSION['error'] = "Invalid email format.";
+                $errors[] = "Invalid email format.";
                 header('Location: Signup.php');
                 exit();
             }
 
             if ($password !== $confirm_password) {
-                $_SESSION['error'] = "Passwords do not match.";
+                $errors[] = "Passwords do not match.";
                 header('Location: Signup.php');
                 exit();
             }
 
             if (strlen($username) < 4 || strlen($password) < 6) {
-                $_SESSION['error'] = "Username must be ≥ 4 chars and password ≥ 6 chars.";
+                $errors[] = "Username needs to be at least 4 characters long and password at least 6 characters long.";
                 header('Location: Signup.php');
                 exit();
             }
@@ -129,36 +134,18 @@ switch ($action) {
                 exit();
             }
 
-            // === Profile Picture Upload ===
-            if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] === UPLOAD_ERR_OK) {
-                $target_dir = __DIR__ . "/../uploads/profile_pics/";
-                if (!file_exists($target_dir)) mkdir($target_dir, 0755, true);
-
-                $ext = pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION);
-                $filename = uniqid("pfp_", true) . "." . $ext;
-                $relativePath = "/BegineerLuck_WebDev/NFT_MarketPlace/uploads/profile_pics/" . $filename;
-
-                if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $target_dir . $filename)) {
-                    $profile_pic_path = $relativePath;
-                    $_SESSION['form_data']['profile_pic'] = $profile_pic_path;
-                } else {
-                    $_SESSION['error'] = "Failed to save uploaded profile picture.";
-                    header('Location: Signup.php');
-                    exit();
-                }
-            }
-
             // === Insert User ===
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             $sql = "INSERT INTO users (username, email, password_hash, wallet_address, profile_pic, bio)
                         VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssssss", $username, $email, $hashed_password, $wallet_address, $profile_pic_path, $bio);
+            $stmt->send_long_data(4, $profile_pic);
+            $stmt->bind_param("ssssss", $username, $email, $hashed_password, $wallet_address, $profile_pic, $bio);
 
             if ($stmt->execute()) {
                 unset($_SESSION['form_data']); // Clear after success
                 $_SESSION['username'] = $username;
-                header('Location: /BegineerLuck_WebDev/NFT_MarketPlace/Homepage/index.php');
+                header('Location: /BegineerLuck_WebDev/public/Homepage/index.php');
                 exit();
             } else {
                 $_SESSION['error'] = "Signup failed: " . $stmt->error;

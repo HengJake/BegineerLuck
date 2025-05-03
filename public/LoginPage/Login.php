@@ -14,7 +14,7 @@
     <div class="flex-column flex-center">
         <h2 class="Login_Title text-center mb-3">Login</h2>
 
-        <div class="Login_Container 1 flex-center flex-column ">
+        <div class="Login_Container 1 flex-center flex-column hidden">
             <button class="Login_CloseForget btn" style="scale: 0.7;">
                 <span class="material-icons">
                     close
@@ -37,7 +37,7 @@
             </form>
         </div>
 
-        <div class="Login_Container 2 flex-center flex-column hidden">
+        <div class="Login_Container 2 flex-center flex-column ">
 
             <!-- === Error Message Section === -->
             <?php
@@ -68,7 +68,7 @@
         </div>
     </div>
 </body>
-<script src="\BegineerLuck_WebDev\NFT_MarketPlace\LoginPage\Login.js"></script>
+<script src="Login.js"></script>
 
 
 </html>
