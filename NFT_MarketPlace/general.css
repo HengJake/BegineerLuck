@@ -447,7 +447,8 @@ ul {
     display: flex;
     overflow: hidden;
     position: relative;
-    height: 200px;
+    height: 230px;
+    gap: 1rem;
   }
   
   .nft-card {
@@ -457,6 +458,43 @@ ul {
     border: 2px solid black;
     border-radius: 10px;
     transition: transform 0.4s ease-in-out;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .nft-card.locked .nft-img {
+    filter: grayscale(1) brightness(0.5);
+    position: relative;
+  }
+  
+  .nft-card.locked::after {
+    content: "";
+    background: url('/BegineerLuck_WebDev/NFT_MarketPlace/img/lock_overlay.png') center center no-repeat;
+    background-size: 50px 50px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+  }
+  
+  .nft-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+  }
+  
+  .nft-card-inner h4 {
+    font-family: var(--font-pixel);
+    margin: 0.25rem 0;
   }
   
   .nft-carousel-controls {
@@ -474,9 +512,20 @@ ul {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    transition: transform 0.2s ease-in-out;
   }
   
-
+  .nft-carousel-controls button:hover {
+    transform: scale(1.1);
+  }
+  
+  .nft-card.empty {
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: gray;
+  }
 /* ==============================================`` NFT Details Page============================================== */
 
 .Details_Body {

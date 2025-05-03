@@ -1,4 +1,4 @@
-
+// index.js (NFTs with images and character redirect)
 
 document.addEventListener("DOMContentLoaded", () => {
   const categories = document.querySelectorAll(".category");
@@ -12,13 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentSlide = 0;
 
   const nftData = [
-    { id: 1, name: "Blaze Dragon", element: "fire", type: "popular", locked: false },
-    { id: 2, name: "Inferno Wolf", element: "fire", type: "expensive", locked: true },
-    { id: 3, name: "Steam Spirit", element: "water", type: "popular", locked: false },
-    { id: 4, name: "Ocean Titan", element: "water", type: "expensive", locked: false },
-    { id: 5, name: "Shadow Reaper", element: "shadow", type: "popular", locked: true },
-    { id: 6, name: "Leaf Guardian", element: "grass", type: "popular", locked: false },
-    { id: 7, name: "Whirlwind Fox", element: "wind", type: "expensive", locked: true }
+    { id: 1, name: "Blaze Dragon", element: "fire", type: "popular", locked: false, img: "fire_unlocked1.jpg", page: "fire_unlocked2.jpg" },
+    { id: 2, name: "Inferno Wolf", element: "fire", type: "expensive", locked: true, img: "fire_locked1.jpg" },
+    { id: 3, name: "Steam Spirit", element: "water", type: "popular", locked: false, img: "water_unlocked1.jpg", page: "water_unlocked2.jpg" },
+    { id: 4, name: "Ocean Titan", element: "water", type: "expensive", locked: true, img: "water_locked1.jpg" },
+    { id: 5, name: "Shadow Reaper", element: "shadow", type: "popular", locked: true, img: "shadow_locked1.jpg" },
+    { id: 6, name: "Leaf Guardian", element: "grass", type: "popular", locked: false, img: "grass_unlocked1.jpg", page: "grass_unlocked2.jpg" },
+    { id: 7, name: "Whirlwind Fox", element: "wind", type: "expensive", locked: true, img: "wind_locked1.jpg" },
+    { id: 8, name: "Earth Golem", element: "earth", type: "popular", locked: true, img: "earth_locked1.jpg" },
+    { id: 9, name: "Rock Warrior", element: "earth", type: "expensive", locked: false, img: "earth_unlocked1.jpg", page: "earth_unlocked2.jpg" },
+    { id: 10, name: "Energy Sprite", element: "energy", type: "popular", locked: false, img: "energy_unlocked1.jpg", page: "energy_unlocked2.jpg" }
   ];
 
   function renderNFTs() {
@@ -37,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       card.innerHTML = `
         <div class="nft-card-inner">
+          <img src="/BegineerLuck_WebDev/NFT_MarketPlace/StickmanNFT/${nft.img}" alt="${nft.name}" class="nft-img">
           <h4>${nft.name}</h4>
           <p>${nft.locked ? "🔒 Locked" : "✅ Unlocked"}</p>
         </div>
@@ -45,8 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
       card.addEventListener("click", () => {
         if (nft.locked) {
           alert("This NFT is locked. Unlock it by leveling up!");
-        } else {
-          alert(`Viewing ${nft.name}`);
+        } else if (nft.page) {
+          window.location.href = `/BegineerLuck_WebDev/NFT_MarketPlace/CharacterPage/${nft.page}`;
         }
       });
 
