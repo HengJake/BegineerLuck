@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "@solana/web3.js": "^1.98.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  },
+  "name": "begineerluck_webdev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "testSolana.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HengJake/BegineerLuck_WebDev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HengJake/BegineerLuck_WebDev/issues"
+  },
+  "homepage": "https://github.com/HengJake/BegineerLuck_WebDev#readme"
+}

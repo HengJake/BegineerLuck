@@ -23,9 +23,9 @@
                 unset($_SESSION['error']);
             }
             ?>
-
+            <button id="testButton">test</button>
             <!-- === Signup Form === -->
-            <form class="w-100" action="auth_backend.php?action=signup" method="POST">
+            <form class="w-100" method="POST" id="signupForm">
                 <p class="Login_SmallText w-100 text-left mb-3">
                     Already have an account? <a href="Login.php">Log In</a>
                 </p>
@@ -80,11 +80,11 @@
                 <button class="btn w-100" type="submit">Sign Up</button>
             </form>
 
-            
+
         </div>
     </div>
 
-
+    <script src="Signup.js"></script>
 </body>
 
 </html>
