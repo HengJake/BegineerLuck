@@ -55,16 +55,18 @@ switch ($action) {
 
     case 'signup':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             $username = trim($_POST['username']);
             $email = trim($_POST['email']);
             $password = $_POST['password'];
             $confirm_password = $_POST['confirm_password'];
             $wallet_address = trim($_POST['wallet_address'] ?? '');
             $bio = trim($_POST['bio'] ?? '');
-            $profile_pic_path = null;
+            $errors = [];
 
-            // Validation
+            // Default profile picture
+            $profile_pic_path = "/BegineerLuck_WebDev/NFT_MarketPlace/img/DefaultPfp.png";
+
+            // === Validation ===
             if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
                 $_SESSION['error'] = "Please fill in all required fields.";
                 header('Location: Signup.php');
@@ -89,35 +91,72 @@ switch ($action) {
                 exit();
             }
 
-            // Handle profile picture upload
+            // === Preserve form values ===
+            $_SESSION['form_data'] = [
+                'username' => $username,
+                'email' => $email,
+                'wallet_address' => $wallet_address,
+                'bio' => $bio
+            ];
+
+            // === Uniqueness Checks ===
+            $checkUsername = $conn->prepare("SELECT id FROM users WHERE username = ?");
+            $checkUsername->bind_param("s", $username);
+            $checkUsername->execute();
+            if ($checkUsername->get_result()->num_rows > 0) {
+                $errors[] = "Username already taken.";
+            }
+
+            $checkEmail = $conn->prepare("SELECT id FROM users WHERE email = ?");
+            $checkEmail->bind_param("s", $email);
+            $checkEmail->execute();
+            if ($checkEmail->get_result()->num_rows > 0) {
+                $errors[] = "Email is already registered.";
+            }
+
+            if (!empty($wallet_address)) {
+                $checkWallet = $conn->prepare("SELECT id FROM users WHERE wallet_address = ?");
+                $checkWallet->bind_param("s", $wallet_address);
+                $checkWallet->execute();
+                if ($checkWallet->get_result()->num_rows > 0) {
+                    $errors[] = "Wallet address is already registered.";
+                }
+            }
+
+            if (!empty($errors)) {
+                $_SESSION['error'] = implode("<br>", $errors);
+                header("Location: Signup.php");
+                exit();
+            }
+
+            // === Profile Picture Upload ===
             if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] === UPLOAD_ERR_OK) {
-                $target_dir = "uploads/profile_pics/";
+                $target_dir = __DIR__ . "/../uploads/profile_pics/";
                 if (!file_exists($target_dir)) mkdir($target_dir, 0755, true);
 
                 $ext = pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION);
                 $filename = uniqid("pfp_", true) . "." . $ext;
-                $profile_pic_path = $target_dir . $filename;
+                $relativePath = "/BegineerLuck_WebDev/NFT_MarketPlace/uploads/profile_pics/" . $filename;
 
-                move_uploaded_file($_FILES['profile_pic']['tmp_name'], $profile_pic_path);
+                if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $target_dir . $filename)) {
+                    $profile_pic_path = $relativePath;
+                    $_SESSION['form_data']['profile_pic'] = $profile_pic_path;
+                } else {
+                    $_SESSION['error'] = "Failed to save uploaded profile picture.";
+                    header('Location: Signup.php');
+                    exit();
+                }
             }
 
-            // Hash password
+            // === Insert User ===
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-            // Insert into database
-            $sql = "INSERT INTO users (username, email, password_hash, wallet_address, profile_pic, bio) 
+            $sql = "INSERT INTO users (username, email, password_hash, wallet_address, profile_pic, bio)
                         VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-
-            if (!$stmt) {
-                $_SESSION['error'] = "Signup failed: " . $conn->error;
-                header('Location: Signup.php');
-                exit();
-            }
-
             $stmt->bind_param("ssssss", $username, $email, $hashed_password, $wallet_address, $profile_pic_path, $bio);
 
             if ($stmt->execute()) {
+                unset($_SESSION['form_data']); // Clear after success
                 $_SESSION['username'] = $username;
                 header('Location: /BegineerLuck_WebDev/NFT_MarketPlace/Homepage/index.php');
                 exit();
@@ -127,6 +166,19 @@ switch ($action) {
                 exit();
             }
         }
+        break;
+
+    case 'ResetPassword':
+        $email = $_POST['email'];
+        $token = bin2hex(random_bytes(16));
+        $token_hash = hash('sha256', $token);
+        // token last 10 minutes
+        $expiry = date("Y-m-d H:i:s", time() + 60 * 10);
+
+        $sql = "UPDATE users SET reset_token_hash = ?, reset_token_expires_at = ? WHERE email = ?";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("sss", $token_hash, $expiry, $email);
+        $stmt->execute();
         break;
 
     default:
