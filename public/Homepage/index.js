@@ -1,5 +1,3 @@
-// index.js (NFTs with images and character redirect)
-
 document.addEventListener("DOMContentLoaded", () => {
   const categories = document.querySelectorAll(".category");
   const filterButtons = document.querySelectorAll(".filter-btn");
@@ -12,8 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentSlide = 0;
 
   const nftData = [
-    { id: 1, name: "Blaze Dragon", element: "fire", type: "popular", locked: false, img: "fire_unlocked1.jpg", page: "fire_unlocked2.jpg" },
-    { id: 2, name: "Inferno Wolf", element: "fire", type: "expensive", locked: true, img: "fire_locked1.jpg" },
+    { id: 1, name: "Blaze Dragon", element: "fire", type: "popular", locked: false, img: "fire_unlocked2.jpg", page: "fire_unlocked2.jpg" },
+    { id: 2, name: "Inferno Wolf", element: "fire", type: "expensive", locked: true, img: "fire_locked2.jpg" },
     { id: 3, name: "Steam Spirit", element: "water", type: "popular", locked: false, img: "water_unlocked1.jpg", page: "water_unlocked2.jpg" },
     { id: 4, name: "Ocean Titan", element: "water", type: "expensive", locked: true, img: "water_locked1.jpg" },
     { id: 5, name: "Shadow Reaper", element: "shadow", type: "popular", locked: true, img: "shadow_locked1.jpg" },
@@ -29,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     nftCarousel.innerHTML = "";
 
     if (visibleNFTs.length === 0) {
-      nftCarousel.innerHTML = `<div class='nft-card empty'>No NFTs found</div>`;
+      nftCarousel.innerHTML = `<div class="nft-card empty">No NFTs found</div>`;
       return;
     }
 
@@ -40,7 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       card.innerHTML = `
         <div class="nft-card-inner">
-          <img src="/BegineerLuck_WebDev/NFT_MarketPlace/StickmanNFT/${nft.img}" alt="${nft.name}" class="nft-img">
+          <img 
+            src="/BegineerLuck_WebDev/public/StickmanNFT/${nft.img}" 
+            alt="${nft.name}" 
+            class="nft-img"
+            onerror="this.src='/BegineerLuck_WebDev/public/img/placeholder.jpg'"
+          >
           <h4>${nft.name}</h4>
           <p>${nft.locked ? "🔒 Locked" : "✅ Unlocked"}</p>
         </div>
@@ -50,12 +53,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (nft.locked) {
           alert("This NFT is locked. Unlock it by leveling up!");
         } else if (nft.page) {
-          window.location.href = `/BegineerLuck_WebDev/NFT_MarketPlace/CharacterPage/${nft.page}`;
+          // Redirect to character detail page in the new CharacterPage folder
+          window.location.href = `/BegineerLuck_WebDev/public/CharacterPage/CharacterPage.php?img=${nft.page}`;
         }
       });
 
       nftCarousel.appendChild(card);
     });
+
     updateSlide(0);
   }
 
@@ -86,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("This element is locked!");
         return;
       }
+
       categories.forEach(c => c.classList.remove("active"));
       cat.classList.add("active");
       currentCategory = cat.dataset.type;
