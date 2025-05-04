@@ -63,6 +63,10 @@
 
                 <p class="Login_SmallText mb-3"><a class="Login_ForgetLink" href="#">Forgot Password?</a></p>
 
+                <!-- Set up cookies
+
+Forget Password -> user email https://www.youtube.com/watch?app=desktop&v=R9bfts9ZFjs -->
+
                 <button class="btn w-100" type="submit">Login</button>
             </form>
         </div>

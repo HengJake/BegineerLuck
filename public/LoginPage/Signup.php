@@ -68,6 +68,7 @@
                         required
                         value="<?php echo $_SESSION['form_data']['wallet_address'] ?? ''; ?>">
                 </div>
+                <!--     If no wallet => link to other wallet options -->
 
                 <div class="mb-1">
                     <label for="profile_pic">Profile Picture (optional)</label>
@@ -88,6 +89,8 @@
 
         </div>
     </div>
+
+
 
     <script src="Signup.js"></script>
 </body>

@@ -38,7 +38,7 @@ switch ($action) {
             if ($user = $result->fetch_assoc()) {
                 if (password_verify($password, $user['password_hash'])) {
                     $_SESSION['username'] = $username;
-                    header('Location: /BegineerLuck_WebDev/NFT_MarketPlace/Homepage/index.php');
+                    header('Location: /BegineerLuck_WebDev/public/Homepage/index.php');
                     exit();
                 } else {
                     $_SESSION['error'] = "Invalid username or password.";
@@ -156,6 +156,8 @@ switch ($action) {
         break;
 
     case 'ResetPassword':
+        $mail = require_once 'mailer.php'; // Adjust the path as necessary
+
         $email = $_POST['email'];
         $token = bin2hex(random_bytes(16));
         $token_hash = hash('sha256', $token);
@@ -163,9 +165,100 @@ switch ($action) {
         $expiry = date("Y-m-d H:i:s", time() + 60 * 10);
 
         $sql = "UPDATE users SET reset_token_hash = ?, reset_token_expires_at = ? WHERE email = ?";
-        $stmt = $mysqli->prepare($sql);
+        $stmt = $conn->prepare($sql);
         $stmt->bind_param("sss", $token_hash, $expiry, $email);
         $stmt->execute();
+
+        if ($conn->affected_rows > 0) {
+            $mail->setFrom('noreply@example.com');
+            $mail->addAddress($email);
+            $mail->Subject = 'Password Reset Request';
+            $mail->Body = "Click the link to reset your password: <a href='http://localhost:8081/BegineerLuck_WebDev/public/LoginPage/ResetPasswordPage.php?token=$token'>Reset Password</a>";
+            try {
+                $mail->send();
+                echo "Reset link sent to your email.";
+            } catch (Exception $e) {
+                echo "Mailer Error: " . $mail->ErrorInfo;
+            }
+        } else {
+            echo "Email not found.";
+        }
+        echo "<script>window.location='AfterLinkSend.php?email={$email}'</script>";
+        echo "<script>window.alert('If the email is registered, a reset link has been sent.');</script>";
+        break;
+
+    case 'ResetPassword2':
+        $token = $_POST['token'];
+
+        $token_hash = hash('sha256', $token);
+
+        require_once '../db_connect.php';
+
+        $sql = " SELECT * FROM users WHERE reset_token_hash = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $token_hash);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $user = $result->fetch_assoc();
+
+        if (!$user) {
+            die("Invalid token or token has expired.");
+        }
+
+        if (strtotime($user["reset_token_expires_at"]) <= time()) {
+            die("Token has expired.");
+        }
+
+        if ($_POST['password'] !== $_POST['password2']) {
+            echo "<script>window.alert('Passwords do not match.');</script>";
+            break;
+        }
+
+        $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $sql = "UPDATE users SET password_hash = ?, reset_token_hash = NULL, reset_token_expires_at = NULL WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("si", $password_hash, $user['id']);
+        $stmt->execute();
+        echo "<script>window.alert('Password reset successfully. You can now log in.');</script>";
+        echo "<script>window.location.href = 'Login.php';</script>";
+        exit();
+
+        break;
+    case 'CancelResetToken':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $token = $_POST['token'] ?? '';
+            if ($token) {
+                $token_hash = hash('sha256', $token);
+                require_once '../db_connect.php';
+
+                $sql = " SELECT * FROM users WHERE reset_token_hash = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("s", $token_hash);
+                $stmt->execute();
+        
+                $result = $stmt->get_result();
+        
+                $user = $result->fetch_assoc();
+        
+                if (!$user) {
+                    die("Invalid token or token has expired.");
+                }
+        
+                if (strtotime($user["reset_token_expires_at"]) <= time()) {
+                    die("Token has expired.");
+                }
+
+                $sql = "UPDATE users SET reset_token_hash = NULL, reset_token_expires_at = NULL WHERE id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("s", $user['id']);
+                $stmt->execute();
+                echo "<script>window.alert('Password reset successfully. You can now log in.');</script>";
+            }
+            http_response_code(200);
+            exit();
+        }
         break;
 
     default:

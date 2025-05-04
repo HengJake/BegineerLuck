@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const CloseForgetForm = document.querySelector(".Login_CloseForget");
     const ForgetForm = document.querySelectorAll(".Login_Container")[0];
     const LoginForm = document.querySelectorAll(".Login_Container")[1];
+
+
+    // transition for forget password form
     ForgetPassword.addEventListener('click', function() {
         ForgetForm.classList.remove('hidden')
         LoginForm.classList.add('hidden')
