@@ -351,7 +351,9 @@ a:hover {
 }
 
 
-/* ==============================================`` Index Page============================================== */
+/* ============================================== */
+/* =============== Marketplace CSS ============== */
+/* ============================================== */
 
 .Homepage_Background {
     background: url('/BegineerLuck_WebDev/public/img/MarketPlaceView.jpg') no-repeat center center;
@@ -365,11 +367,11 @@ a:hover {
     height: 100%;
 }
 
+/* ------------------ Header ------------------ */
 .Homepage_Header {
     width: 100%;
     height: 150px;
     display: flex;
-    justify-content: space-ar;
     align-items: center;
     padding-bottom: 2rem;
     position: relative;
@@ -386,21 +388,6 @@ a:hover {
     padding: var(--spacing-lg);
 }
 
-.Homepage_Directory .material-icons-outlined {
-    font-size: 3rem;
-    color: var(--extra-color-light1);
-    text-shadow: 0px 0px 3px var(--extra-color-dark1);
-    cursor: pointer;
-    padding: var(--spacing-sm);
-    background-color: rgba(255, 245, 214, 0.5);
-    border-radius: var(--rd-md);
-    transition: all 0.2s ease-in-out;
-}
-
-.Homepage_Directory .material-icons-outlined:hover {
-    scale: 1.1;
-}
-
 .Homepage_Directory input {
     flex-grow: 1;
     background-color: var(--extra-color-light1);
@@ -408,6 +395,22 @@ a:hover {
     box-shadow: var(--shadow-sm);
 }
 
+.material-icons-outlined {
+    font-size: 3rem;
+    color: var(--extra-color-light1);
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    background-color: rgba(255, 245, 214, 0.5);
+    border-radius: var(--rd-md);
+    transition: transform 0.2s ease-in-out;
+    text-shadow: 0px 0px 3px var(--extra-color-dark1);
+}
+
+.material-icons-outlined:hover {
+    transform: scale(1.1);
+}
+
+/* ------------------ Shade Banner ------------------ */
 .Homepage_ShadeContainer {
     display: flex;
     justify-content: center;
@@ -430,7 +433,6 @@ a:hover {
     box-shadow: var(--shadow-md);
 }
 
-/* Red and White Color */
 .Red {
     background-color: #e63946;
 }
@@ -447,10 +449,13 @@ a:hover {
     z-index: 101;
 }
 
-/* CATEGORY SIDEBAR */
+/* ------------------ Categories ------------------ */
 .category-panel ul {
     list-style: none;
     padding: 0;
+}
+
+.category {
 }
 
 .category {
@@ -467,7 +472,13 @@ a:hover {
 }
 
 .category:hover {
+}
+
+.category:hover {
     background-color: #f0e68c;
+}
+
+.category.active {
 }
 
 .category.active {
@@ -485,7 +496,7 @@ a:hover {
     font-size: 0.8rem;
 }
 
-/* NFT PANEL */
+/* ------------------ NFT Panel ------------------ */
 .nft-display-panel {
     flex: 1;
     background: rgba(255, 255, 255, 0.8);
@@ -494,9 +505,15 @@ a:hover {
 }
 
 .nft-filters {
+}
+
+.nft-filters {
     display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
+}
+
+.filter-btn {
 }
 
 .filter-btn {
@@ -510,8 +527,14 @@ a:hover {
 }
 
 .filter-btn.active {
+}
+
+.filter-btn.active {
     background-color: #e63946;
     color: white;
+}
+
+.section-title {
 }
 
 .section-title {
@@ -520,6 +543,7 @@ a:hover {
     font-family: var(--font-pixel);
 }
 
+/* ------------------ NFT Carousel ------------------ */
 .nft-carousel {
     display: flex;
     overflow: hidden;
@@ -529,39 +553,47 @@ a:hover {
 }
 
 .nft-card {
+}
+
+.nft-card {
     flex: 0 0 100%;
     height: 100%;
     background-color: #f5f5f5;
     border: 2px solid black;
     border-radius: 10px;
-    transition: transform 0.4s ease-in-out;
     position: relative;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.4s ease-in-out;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
-    text-align: center;
 }
 
-.nft-card.locked .nft-img {
-    filter: grayscale(1) brightness(0.5);
+.nft-card:hover {
+    transform: scale(1.03);
+}
+
+/* Locked visual styling */
+.nft-card.locked {
+    filter: grayscale(1) brightness(0.6);
     position: relative;
+    cursor: not-allowed;
 }
 
 .nft-card.locked::after {
-    content: "";
-    background: url('/BegineerLuck_WebDev/public/img/lock_overlay.png') center center no-repeat;
-    background-size: 50px 50px;
+    content: "🔒";
+    font-size: 2.5rem;
+    color: #333;
     position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
+    top: 10px;
+    right: 10px;
     pointer-events: none;
 }
 
+
+/* Image inside the card */
 .nft-img {
     width: 100px;
     height: 100px;
@@ -574,6 +606,7 @@ a:hover {
     margin: 0.25rem 0;
 }
 
+/* Carousel Controls */
 .nft-carousel-controls {
     margin-top: 1rem;
     display: flex;
@@ -596,12 +629,15 @@ a:hover {
     transform: scale(1.1);
 }
 
+/* Empty State */
 .nft-card.empty {
     justify-content: center;
     align-items: center;
     font-style: italic;
     font-size: 1.2rem;
     color: gray;
+}
+
 }
 
 /* ==============================================`` NFT Details Page============================================== */

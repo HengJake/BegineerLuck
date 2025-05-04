@@ -1,12 +1,12 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/BegineerLuck_WebDev/NFT_MarketPlace/db_connect.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/BegineerLuck_WebDev/public/db_connect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/BegineerLuck_WebDev/NFT_MarketPlace/general.css">
+    <link rel="stylesheet" href="/BegineerLuck_WebDev/public/general.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <title>View Inventory</title>
 </head>

@@ -1,3 +1,7 @@
+<?php
+    define('BASE_URL', '/BegineerLuck_WebDev/public/');
+    $marketName = 'Elemental'; // You can change this to fit your project
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,39 +17,29 @@
 
     <header class="Homepage_Header">
         <div class="Homepage_Directory">
-            <h1 class="Homepage_Title">[name] Marketplace</h1>
+            <h1 class="Homepage_Title"><?php echo $marketName; ?> Marketplace</h1>
             <input type="text" placeholder="Search...">
             <div class="flex">
-                <a href="\BegineerLuck_WebDev\NFT_MarketPlace\ProfilePage\Profile.php">
+                <a href="<?= BASE_URL ?>ProfilePage/Profile.php">
                     <span class="material-icons-outlined">account_circle</span>
                 </a>
-                <a href="\BegineerLuck_WebDev\NFT_MarketPlace\NFTDetailsPage\NFTDetails.php">
-                <a href="/BegineerLuck_WebDev/NFT_MarketPlace/ProfilePage/Profile.php">
-                    <span class="material-icons-outlined">account_circle</span>
-                </a>
-                <a href="/BegineerLuck_WebDev/NFT_MarketPlace/NFTDetailsPage/NFTDetails.php">
+
+                <a href="<?= BASE_URL ?>NFTDetailsPage/NFTDetails.php">
                     <span class="material-icons-outlined">inventory_2</span>
                 </a>
             </div>
         </div>
 
         <div class="Homepage_ShadeContainer">
-            <div class="Homepage__ShadeThingie Red"></div>
-            <div class="Homepage__ShadeThingie White"></div>
-            <div class="Homepage__ShadeThingie Red"></div>
-            <div class="Homepage__ShadeThingie White"></div>
-            <div class="Homepage__ShadeThingie Red"></div>
-            <div class="Homepage__ShadeThingie White"></div>
-            <div class="Homepage__ShadeThingie Red"></div>
-            <div class="Homepage__ShadeThingie White"></div>
-            <div class="Homepage__ShadeThingie Red"></div>
-            <div class="Homepage__ShadeThingie White"></div>
-            <div class="Homepage__ShadeThingie Red"></div>
-            <div class="Homepage__ShadeThingie White"></div>
+            <?php
+            // Dynamically repeat red/white pattern 6 times
+            for ($i = 0; $i < 6; $i++) {
+                echo '<div class="Homepage__ShadeThingie Red"></div>';
+                echo '<div class="Homepage__ShadeThingie White"></div>';
+            }
+            ?>
         </div>
     </header>
-
-
 
     <main style="padding: 2rem; display: flex; flex-direction: row; gap: 2rem;">
         <!-- Sidebar -->
@@ -73,9 +67,9 @@
             <!-- NFT Section -->
             <h2 class="section-title">POPULAR NFT</h2>
             <div class="nft-carousel">
-                <div class="nft-card"></div>
-                <div class="nft-card"></div>
-                <div class="nft-card"></div>
+                <div class="nft-card">NFT #1</div>
+                <div class="nft-card">NFT #2</div>
+                <div class="nft-card">NFT #3</div>
             </div>
             <div class="nft-carousel-controls">
                 <button id="prev-slide">&#9664;</button>
@@ -84,6 +78,6 @@
         </section>
     </main>
 
-    <script src="index.js"></script>
+    <script src="<?= BASE_URL ?>Homepage/index.js"></script>
 </body>
 </html>
