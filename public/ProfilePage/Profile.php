@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link rel="stylesheet" href="\BegineerLuck_WebDev\NFT_MarketPlace\general.css">
+    <link rel="stylesheet" href="/BegineerLuck_WebDev/public/general.css">
 
     <title>Document</title>
 </head>

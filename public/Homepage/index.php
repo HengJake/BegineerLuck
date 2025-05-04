@@ -16,16 +16,14 @@
             <h1 class="Homepage_Title">[name] Marketplace</h1>
             <input type="text" placeholder="Search...">
             <div class="flex">
-                <a href="\BegineerLuck_WebDev\NFT_MarketPlace\ProfilePage\Profile.php">
-                    <span class="material-icons-outlined">account_circle</span>
-                </a>
-                <a href="\BegineerLuck_WebDev\NFT_MarketPlace\NFTDetailsPage\NFTDetails.php">
-                <a href="/BegineerLuck_WebDev/NFT_MarketPlace/ProfilePage/Profile.php">
-                    <span class="material-icons-outlined">account_circle</span>
-                </a>
-                <a href="/BegineerLuck_WebDev/NFT_MarketPlace/NFTDetailsPage/NFTDetails.php">
-                    <span class="material-icons-outlined">inventory_2</span>
-                </a>
+            <a href="/BegineerLuck_WebDev/public/ProfilePage/Profile.php">
+                <span class="material-icons-outlined">account_circle</span>
+            </a>
+
+            <a href="/BegineerLuck_WebDev/public/NFTDetailsPage/NFTDetails.php">
+                <span class="material-icons-outlined">inventory_2</span>
+            </a>
+
             </div>
         </div>
 
