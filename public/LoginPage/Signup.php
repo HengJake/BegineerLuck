@@ -1,3 +1,13 @@
+<?php
+
+if (isset($_COOKIE['Username'])) {
+    $name = $_COOKIE['Username'];
+    echo "<script>window.location.href = '/BegineerLuck_WebDev/public/Homepage/index.php';alert(`Welcome back, {$name}!`);</script>";
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const ForgetPassword = document.querySelector(".Login_ForgetLink");
-    const CloseForgetForm = document.querySelector(".Login_CloseForget");
+    const CloseForgetForm = document.querySelector("#CloseForget");
     const ForgetForm = document.querySelectorAll(".Login_Container")[0];
     const LoginForm = document.querySelectorAll(".Login_Container")[1];
 

@@ -53,7 +53,7 @@ ul {
 a {
     text-decoration: none;
     color: inherit;
-    transition: all 0.3s ease-in-out;   
+    transition: all 0.3s ease-in-out;
 }
 
 a:hover {
@@ -206,6 +206,43 @@ a:hover {
     background: var(--secondary-color-dark);
 }
 
+/* ==============================================Custom Alert Box============================================== */
+.AlertBoxContainer {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: all 0.5s ease;
+}
+
+.AlertBox {
+    position: relative;
+    background-color: var(--extra-color-dark3);
+    color: var(--extra-color-light1);
+    padding: var(--spacing-lg);
+    border-radius: var(--rd-sm);
+    box-shadow: var(--shadow-md);
+    z-index: 1001;
+    transform: translate(0%, 0%);
+    transition: all 0.3s ease-in-out;
+}
+
+.AlertBox.offscreen {
+    transform: translate(0, -500%);
+    pointer-events: none;
+}
+
+.AlertBoxContainer.offscreen {
+    opacity: 0;
+    visibility: hidden;
+}
+
 /* ==============================================`` Sign Up Page============================================== */
 .SignUp_Container {
     background-color: var(--extra-color-light1);
@@ -241,7 +278,8 @@ a:hover {
     align-items: center;
     gap: var(--spacing-lg);
     width: 100%;
-    height: 100vh; /* full viewport */
+    height: 100vh;
+    /* full viewport */
     justify-content: center;
 }
 
@@ -263,9 +301,12 @@ a:hover {
 .Reset_Cancel {
     background-color: var(--extra-color-dark3);
 }
+
 .Sent_title .button-wrapper {
-    width: fit-content; /* Shrinks to button size */
-    align-self: flex-start; /* Aligns button to left within the centered container */
+    width: fit-content;
+    /* Shrinks to button size */
+    align-self: flex-start;
+    /* Aligns button to left within the centered container */
 }
 
 .button-wrapper a {
@@ -455,8 +496,7 @@ a:hover {
     padding: 0;
 }
 
-.category {
-}
+.category {}
 
 .category {
     margin: 0.5rem 0;
@@ -471,15 +511,13 @@ a:hover {
     font-weight: bold;
 }
 
-.category:hover {
-}
+.category:hover {}
 
 .category:hover {
     background-color: #f0e68c;
 }
 
-.category.active {
-}
+.category.active {}
 
 .category.active {
     background-color: #d4a373;
@@ -504,8 +542,7 @@ a:hover {
     padding: 1.5rem;
 }
 
-.nft-filters {
-}
+.nft-filters {}
 
 .nft-filters {
     display: flex;
@@ -513,8 +550,7 @@ a:hover {
     margin-bottom: 1rem;
 }
 
-.filter-btn {
-}
+.filter-btn {}
 
 .filter-btn {
     padding: 0.5rem 1rem;
@@ -526,16 +562,14 @@ a:hover {
     transition: background-color 0.2s;
 }
 
-.filter-btn.active {
-}
+.filter-btn.active {}
 
 .filter-btn.active {
     background-color: #e63946;
     color: white;
 }
 
-.section-title {
-}
+.section-title {}
 
 .section-title {
     font-size: 1.5rem;
@@ -552,8 +586,7 @@ a:hover {
     gap: 1rem;
 }
 
-.nft-card {
-}
+.nft-card {}
 
 .nft-card {
     flex: 0 0 100%;
@@ -636,8 +669,6 @@ a:hover {
     font-style: italic;
     font-size: 1.2rem;
     color: gray;
-}
-
 }
 
 /* ==============================================`` NFT Details Page============================================== */

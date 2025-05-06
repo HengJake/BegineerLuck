@@ -1,3 +1,13 @@
+<?php
+
+if (isset($_COOKIE['Username'])) {
+    $name = $_COOKIE['Username'];
+    echo "<script>window.location.href = '/BegineerLuck_WebDev/public/Homepage/index.php';alert(`Welcome back, {$name}!`);</script>";
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +25,7 @@
         <h2 class="Login_Title text-center mb-3">Login</h2>
 
         <div class="Login_Container 1 flex-center flex-column hidden">
-            <button class="Login_CloseForget btn" style="scale: 0.7;">
+            <button class="Login_CloseForget btn" id="CloseForget" style="scale: 0.7;">
                 <span class="material-icons">
                     close
                 </span>

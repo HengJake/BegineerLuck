@@ -1,6 +1,12 @@
 <?php
-    define('BASE_URL', '/BegineerLuck_WebDev/public/');
-    $marketName = 'Elemental'; // You can change this to fit your project
+define('BASE_URL', '/BegineerLuck_WebDev/public/');
+$marketName = 'Elemental'; // You can change this to fit your project
+
+if (!isset($_COOKIE['UID'])) {
+    echo "<script>showCustomAlert('Login Require','Log in to access the Stickman Odyssey's Marketplace');window.location.href = '/BegineerLuck_WebDev/public/LoginPage/Login.php';</script>";
+    exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,4 +86,5 @@
 
     <script src="<?= BASE_URL ?>Homepage/index.js"></script>
 </body>
+
 </html>
