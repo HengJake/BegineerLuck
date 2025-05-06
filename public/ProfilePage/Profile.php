@@ -12,8 +12,8 @@
 
 <body>
 
-    <button>Log Out</button>
-
+    <button id="Profile_LogoutButton">Log Out</button>
+<script src="LogoutFunc.js"></script>
 </body>
 
 </html>

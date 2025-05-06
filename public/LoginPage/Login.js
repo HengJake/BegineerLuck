@@ -16,5 +16,4 @@ document.addEventListener("DOMContentLoaded", function () {
         LoginForm.classList.remove('hidden')
     });
 
-
 });

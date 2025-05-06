@@ -37,7 +37,13 @@ switch ($action) {
 
             if ($user = $result->fetch_assoc()) {
                 if (password_verify($password, $user['password_hash'])) {
+
+                    setcookie("UID", $user['id'], time() + 3600, "/");
+                    setcookie("Username", $username, time() + 3600, "/");
+
                     $_SESSION['username'] = $username;
+
+                    echo "<script>window.alert('Login successful! Welcome back $username');</script>";
                     header('Location: /BegineerLuck_WebDev/public/Homepage/index.php');
                     exit();
                 } else {
@@ -144,7 +150,13 @@ switch ($action) {
 
             if ($stmt->execute()) {
                 unset($_SESSION['form_data']); // Clear after success
+
+                // set cookies here
+                $user_id = $conn->insert_id;
+                setcookie("UID", $user_id, time() + 3600, "/");
+                setcookie("Username", $username, time() + 3600, "/");
                 $_SESSION['username'] = $username;
+
                 header('Location: /BegineerLuck_WebDev/public/Homepage/index.php');
                 exit();
             } else {
@@ -237,15 +249,15 @@ switch ($action) {
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("s", $token_hash);
                 $stmt->execute();
-        
+
                 $result = $stmt->get_result();
-        
+
                 $user = $result->fetch_assoc();
-        
+
                 if (!$user) {
                     die("Invalid token or token has expired.");
                 }
-        
+
                 if (strtotime($user["reset_token_expires_at"]) <= time()) {
                     die("Token has expired.");
                 }
@@ -259,6 +271,14 @@ switch ($action) {
             http_response_code(200);
             exit();
         }
+        break;
+    case 'logout':
+        // Clear cookies and session
+        setcookie("UID", "", time() - 3600, "/");
+        setcookie("Username", "", time() - 3600, "/");
+        unset($_SESSION['username']);
+        session_destroy();
+        exit();
         break;
 
     default:
