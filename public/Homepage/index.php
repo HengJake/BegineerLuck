@@ -1,13 +1,3 @@
-<?php
-define('BASE_URL', '/BegineerLuck_WebDev/public/');
-$marketName = 'Elemental'; // You can change this to fit your project
-
-if (!isset($_COOKIE['UID'])) {
-    echo "<script>showCustomAlert('Login Require','Log in to access the Stickman Odyssey's Marketplace');window.location.href = '/BegineerLuck_WebDev/public/LoginPage/Login.php';</script>";
-    exit;
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +6,22 @@ if (!isset($_COOKIE['UID'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once __DIR__ . '/../headLinks.php'; ?>
     <title>Marketplace</title>
+
+    <!-- PHP -->
+    <?php
+    define('BASE_URL', '/BegineerLuck_WebDev/public/');
+    $marketName = 'Elemental'; // You can change this to fit your project
+
+    // make sure include the headlinks.php file
+    if (!isset($_COOKIE['UID'])) {
+        echo "<script>
+            document.addEventListener('DOMContentLoaded', function () {
+                    showCustomAlert('Please Login', 'You must be logged in to continue.', '/BegineerLuck_WebDev/public/LoginPage/Login.php');
+            });
+        </script>";
+        exit;
+    }
+    ?>
 </head>
 
 <body>

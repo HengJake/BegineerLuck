@@ -17,4 +17,4 @@
     </div>
 </div>
 
-<script src="\BegineerLuck_WebDev\public\headLinks.js"></script>
+<script src="/BegineerLuck_WebDev/public/headLinks.js"></script>

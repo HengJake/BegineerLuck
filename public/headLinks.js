@@ -4,35 +4,36 @@ document.addEventListener("DOMContentLoaded", function () {
     const AlertBox = document.querySelector(".AlertBox");
     const AlertBoxBackground = document.querySelector(".AlertBoxContainer");
     const CloseAlert = document.querySelector("#CloseAlert");
-    
+    const AlertMessage = document.querySelector("#AlertMessage");
+    const AlertTitle = document.querySelector("#AlertTitle");
+
     CloseAlert.addEventListener("click", function () {
         AlertBox.classList.add("offscreen");
         AlertBoxBackground.classList.add("offscreen");
     });
 
-    function showCustomAlert(title, message) {
-        const AlertBox = document.querySelector(".AlertBox");
-        const AlertBoxBackground = document.querySelector(".AlertBoxContainer");
-        const CloseAlert = document.querySelector("#CloseAlert");
-        const AlertMessage = document.querySelector("#AlertMessage");
-        const AlertTitle = document.querySelector("#AlertTitle");
+    // Expose globally so PHP can call it
+    window.showCustomAlert = function (title, message, goTo) {
+        AlertTitle.textContent = title;
+        AlertMessage.textContent = message;
 
         AlertBox.classList.remove("offscreen");
         AlertBoxBackground.classList.remove("offscreen");
-        
-        AlertMessage.textContent = message;
-        AlertTitle.textContent = title;
-    
-    
+
         CloseAlert.addEventListener("click", function () {
             AlertBox.classList.add("offscreen");
             AlertBoxBackground.classList.add("offscreen");
+            if (goTo) {
+                window.location.href = goTo;
+            }
         });
 
-        // Optional: Auto-close after 3 seconds
         setTimeout(() => {
             AlertBox.classList.add("offscreen");
             AlertBoxBackground.classList.add("offscreen");
+            if (goTo) {
+                window.location.href = goTo;
+            }
         }, 3000);
-      }
+    };
 });
