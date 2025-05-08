@@ -853,4 +853,47 @@ a:hover {
 }
 
 /* ==============================================`` Trade History Page============================================== */
+
 /* ==============================================`` Profile Page============================================== */
+.Profile_Outer {
+    width: 100%;
+    height: 100%;
+    background-color: var(--extra-color-light1);
+
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+
+    padding: var(--spacing-lg);
+    gap: var(--spacing-lg);
+}
+
+.Profile_Container {
+    padding: var(--spacing-lg);
+    border-radius: var(--rd-md);
+    border: 1px solid var(--border-color);
+    background-color: var(--extra-color-light2);
+}
+
+.Profile_Container.Sidebar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Profile_SidebarContent {
+    flex-grow: 1;
+}
+
+.Profile_SidebarContent li{
+    border-radius: var(--rd-md);
+    padding: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.Profile_SidebarContent li:hover {
+    background-color: var(--extra-color-dark2);
+    color: var(--extra-color-light1);
+}
