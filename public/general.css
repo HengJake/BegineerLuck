@@ -1,899 +1,907 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Gloock&family=Pixelify+Sans:wght@400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Gloock&family=Pixelify+Sans:wght@400..700&display=swap");
 
 /* ====== RESET ====== */
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    height: 100%;
-    font-family: var(--font-pixel);
-    background-color: var(--background-color);
-    color: var(--text-color);
+  height: 100%;
+  font-family: var(--font-pixel);
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 button,
 input {
-    font-family: inherit;
-    border: none;
-    outline: none;
-    background: none;
+  font-family: inherit;
+  border: none;
+  outline: none;
+  background: none;
 }
 
 button:hover {
-    cursor: pointer;
-    color: var(--extra-color-dark2);
-    background-color: var(--extra-color-light1);
+  cursor: pointer;
+  color: var(--extra-color-dark2);
+  background-color: var(--extra-color-light1);
 }
 
 button {
-    transition: all 0.3s ease-in-out;
-    border-radius: var(--rd-sm);
-    padding: var(--spacing-sm);
-    background-color: var(--extra-color-dark2);
-    color: var(--extra-color-light1);
+  transition: all 0.3s ease-in-out;
+  border-radius: var(--rd-sm);
+  padding: var(--spacing-sm);
+  background-color: var(--extra-color-dark2);
+  color: var(--extra-color-light1);
 }
 
 input {
-    padding: var(--spacing-sm);
-    border-bottom: 1px solid var(--extra-color-dark3);
+  padding: var(--spacing-sm);
+  border-bottom: 1px solid var(--extra-color-dark3);
 }
 
 textarea {
-    resize: none;
+  resize: none;
 }
 
 li,
 ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s ease-in-out;
-    text-decoration: underline;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease-in-out;
+  text-decoration: underline;
 }
 
 a:hover {
-    color: var(--extra-color-light1);
-    text-shadow: 1px 1px 2px var(--extra-color-dark1);
+  color: var(--extra-color-light1);
+  text-shadow: 1px 1px 2px var(--extra-color-dark1);
 }
 
 /* ====== VARIABLES ====== */
 :root {
-    /* Colors */
-    --primary-color-dark: #BC6C25;
-    --secondary-color-dark: #DDA15E;
-    --primary-color-light: #FEFAE0;
-    --background-color-dark: #283618;
-    --background-color-light: #606C38;
+  /* Colors */
+  --primary-color-dark: #bc6c25;
+  --secondary-color-dark: #dda15e;
+  --primary-color-light: #fefae0;
+  --background-color-dark: #283618;
+  --background-color-light: #606c38;
 
-    /* Extra Complementary Colors */
-    --extra-color-dark1: #5A3E1B;
-    /* Deep rich brown */
-    --extra-color-dark2: #3E522D;
-    /* Forest moss green */
-    --extra-color-dark3: #7B341E;
-    /* Earthy burnt red */
+  /* Extra Complementary Colors */
+  --extra-color-dark1: #5a3e1b;
+  /* Deep rich brown */
+  --extra-color-dark2: #3e522d;
+  /* Forest moss green */
+  --extra-color-dark3: #7b341e;
+  /* Earthy burnt red */
 
-    /* Extra Light Complementary Colors */
-    --extra-color-light1: #FFF5D6;
-    /* Light sandy beige */
-    --extra-color-light2: #E9EDC9;
-    /* Soft olive-tinged cream */
-    --extra-color-light3: #F6E9B2;
-    /* Soft pastel yellow */
+  /* Extra Light Complementary Colors */
+  --extra-color-light1: #fff5d6;
+  /* Light sandy beige */
+  --extra-color-light2: #e9edc9;
+  /* Soft olive-tinged cream */
+  --extra-color-light3: #f6e9b2;
+  /* Soft pastel yellow */
 
-    --card-background: #ffffff;
-    --text-color: #333333;
-    --button-text-color: #ffffff;
-    --border-color: #dddddd;
+  --card-background: #ffffff;
+  --text-color: #333333;
+  --button-text-color: #ffffff;
+  --border-color: #dddddd;
 
-    /* Font Sizes */
-    --fs-small: 0.875rem;
-    --fs-regular: 1rem;
-    --fs-large: 1.5rem;
+  /* Font Sizes */
+  --fs-small: 0.875rem;
+  --fs-regular: 1rem;
+  --fs-large: 1.5rem;
 
-    /* Font Family */
-    --font-pixel: "Pixelify Sans", sans-serif;
-    --font-mideval: 'Gloock', serif;
-    --font-elegant: 'Cinzel', serif;
+  /* Font Family */
+  --font-pixel: "Pixelify Sans", sans-serif;
+  --font-mideval: "Gloock", serif;
+  --font-elegant: "Cinzel", serif;
 
-    /* Spacing */
-    --spacing-xs: 4px;
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 24px;
-    --spacing-xl: 32px;
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
 
-    /* Border Radius */
-    --rd-sm: 1rem;
-    --rd-md: 3rem;
-    --rd-lg: 5rem;
+  /* Border Radius */
+  --rd-sm: 1rem;
+  --rd-md: 3rem;
+  --rd-lg: 5rem;
 
-    /* Shadows */
-    --shadow-sm: 0 5px 4px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.2);
+  /* Shadows */
+  --shadow-sm: 0 5px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* ====== UTILITIES ====== */
 
 /* Text */
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .text-right {
-    text-align: right;
+  text-align: right;
 }
 
 .text-left {
-    text-align: left;
+  text-align: left;
 }
 
 /* Margin */
 .mt-1 {
-    margin-top: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
 }
 
 .mt-2 {
-    margin-top: var(--spacing-md);
+  margin-top: var(--spacing-md);
 }
 
 .mt-3 {
-    margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
 }
 
 .mb-1 {
-    margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
 }
 
 .mb-2 {
-    margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
 }
 
 .mb-3 {
-    margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
 }
 
 /* Padding */
 .p-1 {
-    padding: var(--spacing-sm);
+  padding: var(--spacing-sm);
 }
 
 .p-2 {
-    padding: var(--spacing-md);
+  padding: var(--spacing-md);
 }
 
 .p-3 {
-    padding: var(--spacing-lg);
+  padding: var(--spacing-lg);
 }
 
 /* Flex */
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-column {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Width */
 .w-100 {
-    width: 100%;
+  width: 100%;
 }
 
 /* Button */
 .btn {
-    padding: var(--spacing-sm) var(--spacing-md);
-    background: var(--primary-color-dark);
-    color: var(--button-text-color);
-    border-radius: var(--rd-md);
-    cursor: pointer;
-    transition: background 0.5s ease;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--primary-color-dark);
+  color: var(--button-text-color);
+  border-radius: var(--rd-md);
+  cursor: pointer;
+  transition: background 0.5s ease;
 }
 
 .btn:hover {
-    background: var(--secondary-color-dark);
+  background: var(--secondary-color-dark);
 }
 
 /* Custom Scroll bar */
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 /* Track (background) */
 ::-webkit-scrollbar-track {
-    background: #e0d3b8;
-    /* parchment-like */
-    border: 1px solid #9e835c;
-    /* aged bronze border */
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
+  background: #e0d3b8;
+  /* parchment-like */
+  border: 1px solid #9e835c;
+  /* aged bronze border */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
 }
 
 /* Thumb (the scroll handle) */
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(145deg, #a37c27, #7b5c1f);
-    /* rich bronze */
-    border-radius: 6px;
-    border: 2px solid #d4b483;
+  background: linear-gradient(145deg, #a37c27, #7b5c1f);
+  /* rich bronze */
+  border-radius: 6px;
+  border: 2px solid #d4b483;
 }
 
 /* Hover effect for thumb */
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(145deg, #c2943b, #8a622a);
+  background: linear-gradient(145deg, #c2943b, #8a622a);
 }
-
 
 /* ==============================================Custom Alert Box============================================== */
 .AlertBoxContainer {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    transition: all 0.5s ease;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: all 0.5s ease;
 }
 
 .AlertBox {
-    position: relative;
-    background-color: var(--extra-color-dark3);
-    color: var(--extra-color-light1);
-    padding: var(--spacing-lg);
-    border-radius: var(--rd-sm);
-    box-shadow: var(--shadow-md);
-    z-index: 1001;
-    transform: translate(0%, 0%);
-    transition: all 0.3s ease-in-out;
+  position: relative;
+  background-color: var(--extra-color-dark3);
+  color: var(--extra-color-light1);
+  padding: var(--spacing-lg);
+  border-radius: var(--rd-sm);
+  box-shadow: var(--shadow-md);
+  z-index: 1001;
+  transform: translate(0%, 0%);
+  transition: all 0.3s ease-in-out;
 }
 
 .AlertBox.offscreen {
-    transform: translate(0, -500%);
-    pointer-events: none;
+  transform: translate(0, -500%);
+  pointer-events: none;
 }
 
 .AlertBoxContainer.offscreen {
-    opacity: 0;
-    visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
 }
 
 /* ==============================================`` Sign Up Page============================================== */
 .SignUp_Container {
-    background-color: var(--extra-color-light1);
-    padding: var(--spacing-lg);
-    border-radius: var(--rd-sm);
+  background-color: var(--extra-color-light1);
+  padding: var(--spacing-lg);
+  border-radius: var(--rd-sm);
 }
 
 .SignUp_Input {
-    padding: var(--spacing-sm);
-    border-radius: var(--rd-sm);
+  padding: var(--spacing-sm);
+  border-radius: var(--rd-sm);
 }
 
 .SignUp_Input:nth-of-type(odd) {
-    background-color: var(--extra-color-light3);
+  background-color: var(--extra-color-light3);
 }
 
 .SignUp_Container2 {
-    height: 450px;
-    overflow-y: auto;
+  height: 450px;
+  overflow-y: auto;
 }
 
 .SignUp_Input input,
 .SignUp_Input textarea {
-    width: 100%;
+  width: 100%;
 }
 
 /* ==============================================`` Sent Page + Reset Password============================================== */
 .Sent_body {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .Sent_background,
 .Reset_Background {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    background-color: var(--primary-color-dark);
-    background: url('/BegineerLuck_WebDev/public/img/MarketplaceBackground.jpg') no-repeat center center;
-    background-size: cover;
-    filter: blur(8px);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
+  background-color: var(--primary-color-dark);
+  background: url("/BegineerLuck_WebDev/public/img/MarketplaceBackground.jpg")
+    no-repeat center center;
+  background-size: cover;
+  filter: blur(8px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 .Sent_title,
 .Reset_Form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-lg);
-    width: 100%;
-    height: 100vh;
-    /* full viewport */
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  width: 100%;
+  height: 100vh;
+  /* full viewport */
+  justify-content: center;
 }
 
 .Sent_title h1,
 .Reset_Form div {
-    background-color: var(--primary-color-light);
-    padding: var(--spacing-lg);
-    border-radius: var(--rd-lg);
-    text-align: center;
+  background-color: var(--primary-color-light);
+  padding: var(--spacing-lg);
+  border-radius: var(--rd-lg);
+  text-align: center;
 }
 
 .Reset_Form div {
-    border-radius: var(--rd-sm);
-    display: flex;
-    flex-direction: column;
-    padding: var(--spacing-lg);
+  border-radius: var(--rd-sm);
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-lg);
 }
 
 .Reset_Cancel {
-    background-color: var(--extra-color-dark3);
+  background-color: var(--extra-color-dark3);
 }
 
 .Sent_title .button-wrapper {
-    width: fit-content;
-    /* Shrinks to button size */
-    align-self: flex-start;
-    /* Aligns button to left within the centered container */
+  width: fit-content;
+  /* Shrinks to button size */
+  align-self: flex-start;
+  /* Aligns button to left within the centered container */
 }
 
 .button-wrapper a {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 /* ==============================================`` Login Page============================================== */
 .Login_Title {
-    font-size: 3rem;
-    transform: translateY(-100px);
+  font-size: 3rem;
+  transform: translateY(-100px);
 }
 
 .Login_Body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-
 .Login_Container {
-    transform: translateY(50px);
-    transition: all 0.3s ease-in-out;
-    position: absolute;
-    min-width: 290px;
-    min-height: 260px;
+  transform: translateY(50px);
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  min-width: 290px;
+  min-height: 260px;
 }
 
 .Login_Container.hidden {
-    transform: translateY(-1000px);
+  transform: translateY(-1000px);
 }
 
 .Login_CloseForget {
-    position: absolute;
-    top: -20px;
-    right: -20px;
+  position: absolute;
+  top: -20px;
+  right: -20px;
 }
 
 .Login_BackgroundImage {
-    background-color: var(--primary-color-dark);
-    background: url('/BegineerLuck_WebDev/public/img/MarketplaceBackground.jpg') no-repeat center center;
-    background-size: cover;
-    filter: blur(8px);
+  background-color: var(--primary-color-dark);
+  background: url("/BegineerLuck_WebDev/public/img/MarketplaceBackground.jpg")
+    no-repeat center center;
+  background-size: cover;
+  filter: blur(8px);
 
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
-
 .Login_Container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-    width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
 
-    padding: var(--spacing-lg);
-    border-radius: var(--rd-sm);
-    box-shadow: var(--shadow-md);
+  padding: var(--spacing-lg);
+  border-radius: var(--rd-sm);
+  box-shadow: var(--shadow-md);
 
-    background-color: var(--extra-color-light1);
+  background-color: var(--extra-color-light1);
 }
 
 .Login_SmallText {
-    font-size: var(--fs-small);
-    color: var(--text-color);
+  font-size: var(--fs-small);
+  color: var(--text-color);
 }
 
 .error-message {
-    background-color: #e63946;
-    color: white;
-    padding: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
-    text-align: center;
-    border-radius: var(--rd-sm);
-    box-shadow: var(--shadow-sm);
-    font-family: var(--font-pixel);
+  background-color: #e63946;
+  color: white;
+  padding: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  border-radius: var(--rd-sm);
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-pixel);
 }
-
 
 /* ============================================== */
 /* =============== Marketplace CSS ============== */
 /* ============================================== */
 
 .Homepage_Background {
-    background: url('/BegineerLuck_WebDev/public/img/MarketPlaceView.jpg') no-repeat center center;
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    filter: blur(8px);
-    width: 100%;
-    height: 100%;
+  background: url("/BegineerLuck_WebDev/public/img/MarketPlaceView.jpg")
+    no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: blur(8px);
+  width: 100%;
+  height: 100%;
 }
 
 /* ------------------ Header ------------------ */
 .Homepage_Header {
-    width: 100%;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    padding-bottom: 2rem;
-    position: relative;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 2rem;
+  position: relative;
 }
 
 .Homepage_Directory {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--spacing-lg);
-    z-index: 101;
-    padding: var(--spacing-lg);
+  background-color: hsla(0, 0%, 0%, 0.405);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-lg);
+  z-index: 101;
+  padding: var(--spacing-lg);
 }
 
 .Homepage_Directory input {
-    flex-grow: 1;
-    background-color: var(--extra-color-light1);
-    border-radius: var(--rd-md);
-    box-shadow: var(--shadow-sm);
+  flex-grow: 1;
+  background-color: var(--extra-color-light1);
+  border-radius: var(--rd-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .material-icons-outlined {
-    font-size: 3rem;
-    color: var(--extra-color-light1);
-    cursor: pointer;
-    padding: var(--spacing-sm);
-    background-color: rgba(255, 245, 214, 0.5);
-    border-radius: var(--rd-md);
-    transition: transform 0.2s ease-in-out;
-    text-shadow: 0px 0px 3px var(--extra-color-dark1);
+  font-size: 3rem;
+  color: var(--extra-color-light1);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  background-color: rgba(255, 245, 214, 0.5);
+  border-radius: var(--rd-md);
+  transition: transform 0.2s ease-in-out;
+  text-shadow: 0px 0px 3px var(--extra-color-dark1);
 }
 
 .material-icons-outlined:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+#Wallet_Status {
+  background-color: red;
+  transition: all 0.3s ease;
 }
 
 /* ------------------ Shade Banner ------------------ */
 .Homepage_ShadeContainer {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    height: 20vh;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    z-index: 100;
-    padding-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 20vh;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  padding-bottom: 1rem;
 }
 
 .Homepage__ShadeThingie {
-    flex-grow: 1;
-    width: 40px;
-    height: 100%;
-    border-bottom-left-radius: var(--rd-lg);
-    border-bottom-right-radius: var(--rd-lg);
-    box-shadow: var(--shadow-md);
+  flex-grow: 1;
+  width: 40px;
+  height: 100%;
+  border-bottom-left-radius: var(--rd-lg);
+  border-bottom-right-radius: var(--rd-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .Red {
-    background-color: #e63946;
+  background-color: #e63946;
 }
 
 .White {
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 .Homepage_Title {
-    font-family: var(--font-cinzel);
-    color: var(--extra-color-light1);
-    text-shadow: 2px 2px 4px #283618;
-    font-size: 3rem;
-    z-index: 101;
+  font-family: var(--font-cinzel);
+  color: var(--extra-color-light1);
+  text-shadow: 2px 2px 4px #283618;
+  font-size: 3rem;
+  z-index: 101;
 }
 
 /* ------------------ Categories ------------------ */
+.category-panel {
+  width: 100%;
+}
+
 .category-panel ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
-.category {}
-
-.category {
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
+.category-panel button {
+  border-radius: 0;
+  flex-grow: 1;
+  text-align: center;
+  background-color: var(--extra-color-dark1);
+  color: var(--extra-color-light1);
+  padding: var(--spacing-sm) var(--spacing-md);
 }
-
-.category:hover {}
 
 .category:hover {
-    background-color: #f0e68c;
+  background-color: #f0e68c;
+  color: var(--extra-color-dark1);
 }
 
-.category.active {}
-
-.category.active {
-    background-color: #d4a373;
-    color: white;
-}
-
-.status.locked {
-    color: #d62828;
-    font-size: 0.8rem;
-}
-
-.status.unlocked {
-    color: #2a9d8f;
-    font-size: 0.8rem;
+.nft-card img {
+  height: 80%;
 }
 
 /* ------------------ NFT Panel ------------------ */
 .nft-display-panel {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    padding: 1.5rem;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 1.5rem;
 }
-
-.nft-filters {}
 
 .nft-filters {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
 }
 
-.filter-btn {}
+.nft-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
 
 .filter-btn {
-    padding: 0.5rem 1rem;
-    background-color: #ccc;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s;
 }
 
-.filter-btn.active {}
+.filter-btn {
+  padding: 0.5rem 1rem;
+  background-color: #ccc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
 
 .filter-btn.active {
-    background-color: #e63946;
-    color: white;
 }
 
-.section-title {}
+.filter-btn.active {
+  background-color: #e63946;
+  color: white;
+}
 
 .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-family: var(--font-pixel);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-pixel);
 }
 
 /* ------------------ NFT Carousel ------------------ */
 .nft-carousel {
-    display: flex;
-    overflow: hidden;
-    position: relative;
-    height: 230px;
-    gap: 1rem;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  min-height: 200px;
+  gap: 1rem;
 }
 
-.nft-card {}
-
 .nft-card {
-    flex: 0 0 100%;
-    height: 100%;
-    background-color: #f5f5f5;
-    border: 2px solid black;
-    border-radius: 10px;
-    position: relative;
-    padding: 1rem;
-    text-align: center;
-    transition: transform 0.4s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  background-color: #f5f5f5;
+  border: 2px solid black;
+  border-radius: 10px;
+  position: relative;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.4s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .nft-card:hover {
-    transform: scale(1.03);
+  transform: scale(1.03);
 }
 
 /* Locked visual styling */
 .nft-card.locked {
-    filter: grayscale(1) brightness(0.6);
-    position: relative;
-    cursor: not-allowed;
+  filter: grayscale(1) brightness(0.6);
+  position: relative;
+  cursor: not-allowed;
 }
 
 .nft-card.locked::after {
-    content: "🔒";
-    font-size: 2.5rem;
-    color: #333;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    pointer-events: none;
+  content: "🔒";
+  font-size: 2.5rem;
+  color: #333;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  pointer-events: none;
 }
-
 
 /* Image inside the card */
 .nft-img {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-    margin-bottom: 0.5rem;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
 }
 
 .nft-card-inner h4 {
-    font-family: var(--font-pixel);
-    margin: 0.25rem 0;
+  font-family: var(--font-pixel);
+  margin: 0.25rem 0;
 }
 
 /* Carousel Controls */
 .nft-carousel-controls {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .nft-carousel-controls button {
-    background-color: #283618;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: transform 0.2s ease-in-out;
+  background-color: #283618;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s ease-in-out;
 }
 
 .nft-carousel-controls button:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /* Empty State */
 .nft-card.empty {
-    justify-content: center;
-    align-items: center;
-    font-style: italic;
-    font-size: 1.2rem;
-    color: gray;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: gray;
 }
 
 /* ==============================================`` NFT Details Page============================================== */
 
 .Details_Body {
-    background-color: var(--extra-color-dark1);
+  background-color: var(--extra-color-dark1);
 
-    padding: var(--spacing-lg);
+  padding: var(--spacing-lg);
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Details_Body main {
-    width: 90%;
-    height: 100%;
-    overflow: auto;
+  width: 90%;
+  height: 100%;
+  overflow: auto;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 
-    border-radius: var(--rd-sm);
-    padding: var(--spacing-xl);
+  border-radius: var(--rd-sm);
+  padding: var(--spacing-xl);
 
-    background-color: var(--extra-color-dark3);
+  background-color: var(--extra-color-dark3);
 }
 
 .Details_BookPage {
-    position: relative;
-    background-color: var(--extra-color-light1);
-    padding: var(--spacing-lg);
-    padding-bottom: calc(var(--spacing-lg) * 2);
-    flex-grow: 1;
+  position: relative;
+  background-color: var(--extra-color-light1);
+  padding: var(--spacing-lg);
+  padding-bottom: calc(var(--spacing-lg) * 2);
+  flex-grow: 1;
 
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    border-top-left-radius: 50% 20px;
-    border-top-right-radius: 50% 20px;
+  border-top-left-radius: 50% 20px;
+  border-top-right-radius: 50% 20px;
 
-    box-shadow: inset -4px 0 8px rgba(0, 0, 0, 0.2);
+  box-shadow: inset -4px 0 8px rgba(0, 0, 0, 0.2);
 }
 
-
 .Details_BookPage::after {
-    content: '';
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    height: 30px;
-    background-color: var(--extra-color-dark3);
-    border-top-left-radius: 50% 20px;
-    border-top-right-radius: 50% 20px;
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 30px;
+  background-color: var(--extra-color-dark3);
+  border-top-left-radius: 50% 20px;
+  border-top-right-radius: 50% 20px;
 }
 
 .Details_Button {
-    background-color: var(--extra-color-light1);
-    color: var(--text-color);
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--rd-md);
-    box-shadow: var(--shadow-sm);
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    position: absolute;
+  background-color: var(--extra-color-light1);
+  color: var(--text-color);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--rd-md);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  position: absolute;
 }
 
 .Details_Button.back {
-    bottom: 50%;
-    transform: translateY(50%);
-    left: var(--spacing-lg);
+  bottom: 50%;
+  transform: translateY(50%);
+  left: var(--spacing-lg);
 }
 
 .Details_Button.foward {
-    bottom: 50%;
-    transform: translateY(50%);
-    right: var(--spacing-lg);
+  bottom: 50%;
+  transform: translateY(50%);
+  right: var(--spacing-lg);
 }
 
 .Details_BookPage {
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease-in-out;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
 }
 
 .Details_BookPage.flip-next {
-    animation: flipNext 0.6s linear;
+  animation: flipNext 0.6s linear;
 }
 
 .Details_BookPage.flip-prev {
-    animation: flipPrev 0.6s linear;
+  animation: flipPrev 0.6s linear;
 }
 
 @keyframes flipNext {
-    0% {
-        transform: rotateY(0);
-        z-index: 1;
-    }
+  0% {
+    transform: rotateY(0);
+    z-index: 1;
+  }
 
-    50% {
-        transform: rotateY(-90deg);
-        z-index: 0;
-    }
+  50% {
+    transform: rotateY(-90deg);
+    z-index: 0;
+  }
 
-    100% {
-        transform: rotateY(-180deg);
-        z-index: -1;
-    }
+  100% {
+    transform: rotateY(-180deg);
+    z-index: -1;
+  }
 }
 
 @keyframes flipPrev {
-    0% {
-        transform: rotateY(-180deg);
-        z-index: -1;
-    }
+  0% {
+    transform: rotateY(-180deg);
+    z-index: -1;
+  }
 
-    50% {
-        transform: rotateY(-90deg);
-        z-index: 0;
-    }
+  50% {
+    transform: rotateY(-90deg);
+    z-index: 0;
+  }
 
-    100% {
-        transform: rotateY(0);
-        z-index: 1;
-    }
+  100% {
+    transform: rotateY(0);
+    z-index: 1;
+  }
 }
 
 /* ==============================================`` Trade History Page============================================== */
 
 /* ==============================================`` Profile Page============================================== */
 .Profile_Outer {
-    width: 100%;
-    height: 100%;
-    background-color: var(--extra-color-light1);
+  width: 100%;
+  height: 100%;
+  background-color: var(--extra-color-light1);
 
-    display: grid;
-    grid-template-columns: 1fr 4fr;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
 
-    padding: var(--spacing-lg);
-    gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  gap: var(--spacing-lg);
 }
 
 .Profile_Container {
-    padding: var(--spacing-lg);
-    border-radius: var(--rd-md);
-    border: 1px solid var(--border-color);
-    background-color: var(--extra-color-light2);
+  padding: var(--spacing-lg);
+  border-radius: var(--rd-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--extra-color-light2);
 }
 
 .Profile_Container.Sidebar {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .Profile_SidebarContent {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
-.Profile_SidebarContent li{
-    border-radius: var(--rd-md);
-    padding: var(--spacing-sm);
-    display: flex;
-    align-items: center;
-    justify-content: start;
+.Profile_SidebarContent li {
+  border-radius: var(--rd-md);
+  padding: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: start;
 }
 
 .Profile_SidebarContent li:hover {
-    background-color: var(--extra-color-dark2);
-    color: var(--extra-color-light1);
+  background-color: var(--extra-color-dark2);
+  color: var(--extra-color-light1);
+}
+
+/* Homepage */
+.DisplayNFT {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: hsla(0, 0%, 100%, 0.684);
+}
+
+.DisplayNFT__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.DisplayNFT__container__NFT {
+  background-color: var(--background-color-light);
 }

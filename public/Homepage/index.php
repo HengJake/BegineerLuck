@@ -39,6 +39,11 @@
                 <a href="<?= BASE_URL ?>NFTDetailsPage/NFTDetails.php">
                     <span class="material-icons-outlined">inventory_2</span>
                 </a>
+                <button onclick="connectWallet()" id="Wallet_Status">
+                    <span class="material-symbols-outlined">
+                        account_balance_wallet
+                    </span>
+                </button>
             </div>
         </div>
 
@@ -53,43 +58,42 @@
         </div>
     </header>
 
-    <main style="padding: 2rem; display: flex; flex-direction: row; gap: 2rem;">
-        <!-- Sidebar -->
-        <aside class="category-panel">
-            <h3>Categories</h3>
-            <ul>
-                <li class="category" data-type="earth">Earth <span class="status locked">Locked</span></li>
-                <li class="category" data-type="fire">Fire <span class="status unlocked">Unlocked</span></li>
-                <li class="category" data-type="water">Water <span class="status unlocked">Unlocked</span></li>
-                <li class="category" data-type="wind">Wind <span class="status locked">Locked</span></li>
-                <li class="category" data-type="shadow">Shadow <span class="status locked">Locked</span></li>
-                <li class="category" data-type="grass">Grass <span class="status unlocked">Unlocked</span></li>
-                <li class="category" data-type="energy">Energy <span class="status unlocked">Unlocked</span></li>
-            </ul>
-        </aside>
+    <div>
+        <main style="padding: 2rem; display: flex; flex-direction: row; gap: 2rem;">
 
-        <!-- Main Content -->
-        <section class="nft-display-panel">
-            <!-- Filter buttons -->
-            <div class="nft-filters">
-                <button class="filter-btn active" data-filter="popular">POPULAR</button>
-                <button class="filter-btn" data-filter="expensive">EXPENSIVE</button>
-            </div>
+            <!-- Main Content -->
+            <section class="nft-display-panel">
+                <!-- Filter buttons -->
+                <div class="nft-filters">
+                    <!-- Sidebar -->
+                    <aside class="category-panel">
+                        <h3>Categories</h3>
+                        <ul>
+                            <button class="category" onclick="getTokenSpecificURI(1)" data-type="earth">Earth</button>
+                            <button class="category" onclick="getTokenSpecificURI(1)" data-type="fire">Fire</button>
+                            <button class="category" onclick="getTokenSpecificURI(1)" data-type="water">Water</button>
+                            <button class="category" onclick="getTokenSpecificURI(1)" data-type="wind">Wind</button>
+                            <button class="category" onclick="getTokenSpecificURI(1)" data-type="shadow">Shadow</button>
+                            <button class="category" onclick="getTokenSpecificURI(1)" data-type="grass">Grass</button>
+                            <button class="category" onclick="getTokenSpecificURI(1)" data-type="energy">Energy</button>
+                        </ul>
+                    </aside>
+                </div>
+                <!-- NFT Section -->
+                <div class="nft-carousel">
+                    <div class="nft-card"></div>
+                </div>
+            </section>
+        </main>
 
-            <!-- NFT Section -->
-            <h2 class="section-title">POPULAR NFT</h2>
-            <div class="nft-carousel">
-                <div class="nft-card">NFT #1</div>
-                <div class="nft-card">NFT #2</div>
-                <div class="nft-card">NFT #3</div>
-            </div>
-            <div class="nft-carousel-controls">
-                <button id="prev-slide">&#9664;</button>
-                <button id="next-slide">&#9654;</button>
-            </div>
+        <section class="DisplayNFT">
+            <h1>All NFT</h1>
+            <section class="DisplayNFT__container">
+            </section>
         </section>
-    </main>
+    </div>
 
+    <script src="/BegineerLuck_WebDev/public/SmartContract/SmartContract.js"></script>
     <script src="<?= BASE_URL ?>Homepage/index.js"></script>
 </body>
 

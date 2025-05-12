@@ -19,7 +19,7 @@
 
   <button onclick="getBaseURI()">Get Base URI</button><br><br>
 
-  <button onclick="getTokenURI(1)">Get Token URI</button><br><br>
+  <button onclick="getTokenURI(3)">Get Token URI</button><br><br>
 
   <button onclick="buyNFT(1)">Buy NFT 1</button>
 

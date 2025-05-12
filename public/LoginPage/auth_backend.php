@@ -40,6 +40,7 @@ switch ($action) {
 
                     setcookie("UID", $user['id'], time() + 3600, "/");
                     setcookie("Username", $username, time() + 3600, "/");
+                    setcookie("WalletAddress", $user['wallet_address'], time() + 3600, "/");
 
                     $_SESSION['username'] = $username;
 
@@ -155,6 +156,7 @@ switch ($action) {
                 $user_id = $conn->insert_id;
                 setcookie("UID", $user_id, time() + 3600, "/");
                 setcookie("Username", $username, time() + 3600, "/");
+                setcookie("WalletAddress", $wallet_address, time() + 3600, "/");
                 $_SESSION['username'] = $username;
 
                 header('Location: /BegineerLuck_WebDev/public/Homepage/index.php');
@@ -276,6 +278,7 @@ switch ($action) {
         // Clear cookies and session
         setcookie("UID", "", time() - 3600, "/");
         setcookie("Username", "", time() - 3600, "/");
+        setcookie("WalletAddress", "", time() - 3600, "/");
         unset($_SESSION['username']);
         session_destroy();
         exit();

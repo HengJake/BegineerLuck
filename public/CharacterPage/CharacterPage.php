@@ -124,7 +124,7 @@ $info = $characterInfo[$image] ?? ['name' => 'Unknown', 'element' => 'Unknown', 
         <p><strong>Rarity:</strong> <?= htmlspecialchars($info['rarity']) ?></p>
         <p><em>More abilities, traits, and backstory coming soon...</em></p>
     </div>
-    <a href="/BegineerLuck_WebDev/public/index.php" class="back-btn">← Back to Marketplace</a>
+    <a href="/BegineerLuck_WebDev/public/Homepage/index.php" class="back-btn">← Back to Marketplace</a>
 </div>
 
 </body>
