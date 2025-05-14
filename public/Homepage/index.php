@@ -98,7 +98,7 @@
         </main>
 
         <section class="DisplayNFT">
-            <h1>All NFT</h1>
+            <h1>All NFT (Red : Owned By Other || Green : Owner by you || Yellow : No Owner)</h1>
             <section class="DisplayNFT__container">
             </section>
         </section>

@@ -905,8 +905,19 @@ a:hover {
 }
 
 .DisplayNFT__container__NFT {
-  background-color: var(--background-color-light);
   color: var(--extra-color-light1);
+}
+
+.notowned {
+  background-color: var(--secondary-color-dark);
+}
+.owned {
+  background-color: var(--background-color-light);
+
+}
+.ownedbyother {
+  background-color: var(--extra-color-dark3);
+
 }
 
 .STKM__AMT {
