@@ -106,12 +106,23 @@
         <section class="TradeNFT">
             <h1>Trade NFT</h1>
             <div>
-                <label for="oAddress">Opponent Player address</label>
-                <input type="text" name="oAddress" id="oAddress">
-                <label for="yoursNFT">Your NFT ID</label>
-                <input type="number" name="yoursNFT" id="yoursNFT">
-                <label for="theirsNFT">Theirs NFT ID</label>
-                <input type="number" name="theirsNFT" id="theirsNFT">
+                <form id="tradeForm">
+                    <label for="oAddress">Opponent Player address</label>
+                    <input type="text" name="oAddress" id="oAddress" required>
+
+                    <label for="yoursNFT">Your NFT ID</label>
+                    <input type="number" name="yoursNFT" id="yoursNFT" required>
+
+                    <label for="theirsNFT">Theirs NFT ID</label>
+                    <input type="number" name="theirsNFT" id="theirsNFT" required>
+
+                    <button type="submit">Start Trade</button>
+                </form>
+            </div>
+            <hr class="mb-2 mt-2">
+            <h1>Trade Request</h1>
+            <div class="TradeRequest" id="TradeRequest">
+
             </div>
         </section>
     </div>

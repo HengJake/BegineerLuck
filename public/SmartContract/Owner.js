@@ -244,7 +244,7 @@ const CONTRACT_ABI = [
   },
   { stateMutability: "payable", type: "receive" },
 ];
-const CONTRACT_ADDRESS = "--";
+const CONTRACT_ADDRESS = "0x7b27eA836fbD2a5e1568B4c5dC66A52f06639Ee4";
 
 const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 
@@ -276,7 +276,7 @@ async function giveSTKM(toAddress, amount) {
 
 // Example usage
 async function main() {
-  const toAddress = "0x33169DecaA13DF33e6210ef9b9C1dDeA62ea3e88"; // Replace with recipient address
+  const toAddress = "0xf05451d9640ef0911cb5a19f2618b66462cde659"; // Replace with recipient address
   const amount = 1000; // Example amount to transfer in STKM
 
   try {
