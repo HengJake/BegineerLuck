@@ -110,3 +110,16 @@
 
 //   renderNFTs();
 // });
+
+const ButtonBuy = document.getElementById("BUY__STKM");
+ButtonBuy.addEventListener('click', async () => {
+  const amount = document.getElementById("setNumberInput").value;
+  try {
+    await buySTKM(amount); // Wait for the transaction to finish
+    window.location.reload(); // Reload only after success
+  } catch (error) {
+    console.error("❌ STKM purchase failed:", error);
+    alert("Transaction failed or rejected.");
+  }
+});
+

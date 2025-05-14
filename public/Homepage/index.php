@@ -39,11 +39,21 @@
                 <a href="<?= BASE_URL ?>NFTDetailsPage/NFTDetails.php">
                     <span class="material-icons-outlined">inventory_2</span>
                 </a>
+                <div class="STKM__AMT">
+                    <p id="STKM">STKM</p>
+                    <div class="BUY__STKM">
+                        <input type="text" id="setNumberInput">
+                        <span class="material-icons-outlined" id="BUY__STKM">
+                            add
+                        </span>
+                    </div>
+                </div>
                 <button onclick="connectWallet()" id="Wallet_Status">
                     <span class="material-symbols-outlined">
                         account_balance_wallet
                     </span>
                 </button>
+
             </div>
         </div>
 
@@ -70,12 +80,13 @@
                         <h3>Categories</h3>
                         <ul>
                             <button class="category" onclick="getTokenSpecificURI(1)" data-type="earth">Earth</button>
-                            <button class="category" onclick="getTokenSpecificURI(1)" data-type="fire">Fire</button>
-                            <button class="category" onclick="getTokenSpecificURI(1)" data-type="water">Water</button>
-                            <button class="category" onclick="getTokenSpecificURI(1)" data-type="wind">Wind</button>
-                            <button class="category" onclick="getTokenSpecificURI(1)" data-type="shadow">Shadow</button>
-                            <button class="category" onclick="getTokenSpecificURI(1)" data-type="grass">Grass</button>
-                            <button class="category" onclick="getTokenSpecificURI(1)" data-type="energy">Energy</button>
+                            <button class="category" onclick="getTokenSpecificURI(4)" data-type="electric">Electric</button>
+                            <button class="category" onclick="getTokenSpecificURI(7)" data-type="energy">Energy</button>
+                            <button class="category" onclick="getTokenSpecificURI(10)" data-type="fire">Fire</button>
+                            <button class="category" onclick="getTokenSpecificURI(13)" data-type="grass">Grass</button>
+                            <button class="category" onclick="getTokenSpecificURI(16)" data-type="shadow">Shadow</button>
+                            <button class="category" onclick="getTokenSpecificURI(19)" data-type="water">Water</button>
+                            <button class="category" onclick="getTokenSpecificURI(22)" data-type="wind">Wind</button>
                         </ul>
                     </aside>
                 </div>
@@ -91,8 +102,19 @@
             <section class="DisplayNFT__container">
             </section>
         </section>
-    </div>
 
+        <section class="TradeNFT">
+            <h1>Trade NFT</h1>
+            <div>
+                <label for="oAddress">Opponent Player address</label>
+                <input type="text" name="oAddress" id="oAddress">
+                <label for="yoursNFT">Your NFT ID</label>
+                <input type="number" name="yoursNFT" id="yoursNFT">
+                <label for="theirsNFT">Theirs NFT ID</label>
+                <input type="number" name="theirsNFT" id="theirsNFT">
+            </div>
+        </section>
+    </div>
     <script src="/BegineerLuck_WebDev/public/SmartContract/SmartContract.js"></script>
     <script src="<?= BASE_URL ?>Homepage/index.js"></script>
 </body>

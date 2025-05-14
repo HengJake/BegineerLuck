@@ -875,6 +875,8 @@ a:hover {
 
 .Profile_SidebarContent {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .Profile_SidebarContent li {
@@ -904,4 +906,27 @@ a:hover {
 
 .DisplayNFT__container__NFT {
   background-color: var(--background-color-light);
+  color: var(--extra-color-light1);
+}
+
+.STKM__AMT {
+  margin: 0 var(--spacing-lg);
+
+  border-radius: var(--rd-sm);
+
+  background-color: var(--extra-color-dark2);
+  color: var(--extra-color-light1);
+  padding: var(--spacing-sm) var(--spacing-xs);
+}
+
+.TradeNFT {
+  padding: var(--spacing-md) var(--spacing-lg);
+
+  color: var(--extra-color-light1);
+  background-color: var(--extra-color-dark3);
+}
+
+.TradeNFT input {
+  background-color: var(--card-background);
+  color: var(--extra-color-dark1);
 }

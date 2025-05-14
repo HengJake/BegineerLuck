@@ -2,32 +2,99 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <title>Counter Contract - Neon EVM</title>
-  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <?php include_once __DIR__ . '/../headLinks.php'; ?>
+  <title>Marketplace TEST</title>
+
+  <!-- PHP -->
+  <?php
+  define('BASE_URL', '/BegineerLuck_WebDev/public/');
+  $marketName = 'Elemental'; // You can change this to fit your project
+
+  // make sure include the headlinks.php file
+  if (!isset($_COOKIE['UID'])) {
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function () {
+                    showCustomAlert('Please Login', 'You must be logged in to continue.', '/BegineerLuck_WebDev/public/LoginPage/Login.php');
+            });
+        </script>";
+    exit;
+  }
+  ?>
 </head>
 
 <body>
-  <h1>Neon EVM Counter Contract</h1>
+  <div class="Homepage_Background"></div>
 
-  <button onclick="connectWallet()">🔗 Connect Wallet</button> <span class="material-icons-outlined" id="Wallet_Status" style="color:red;">clear</span> <br><br>
+  <header class="Homepage_Header">
+    <div class="Homepage_Directory">
+      <h1 class="Homepage_Title"><?php echo $marketName; ?> Marketplace</h1>
+      <input type="text" placeholder="Search...">
+      <div class="flex">
+        <a href="<?= BASE_URL ?>ProfilePage/Profile.php">
+          <span class="material-icons-outlined">account_circle</span>
+        </a>
 
-  <h3>1. Purchase STKM</h3>
-  <input type="number" id="setNumberInput" min=0 placeholder="Enter new number" />
-  <button onclick="buySTKM()">Buy</button><br><br>
+        <a href="<?= BASE_URL ?>NFTDetailsPage/NFTDetails.php">
+          <span class="material-icons-outlined">inventory_2</span>
+        </a>
+        <button onclick="connectWallet()" id="Wallet_Status">
+          <span class="material-symbols-outlined">
+            account_balance_wallet
+          </span>
+        </button>
+      </div>
+    </div>
 
-  <button onclick="getBaseURI()">Get Base URI</button><br><br>
+    <div class="Homepage_ShadeContainer">
+      <?php
+      // Dynamically repeat red/white pattern 6 times
+      for ($i = 0; $i < 6; $i++) {
+        echo '<div class="Homepage__ShadeThingie Red"></div>';
+        echo '<div class="Homepage__ShadeThingie White"></div>';
+      }
+      ?>
+    </div>
+  </header>
 
-  <button onclick="getTokenURI(3)">Get Token URI</button><br><br>
+  <div>
+    <main style="padding: 2rem; display: flex; flex-direction: row; gap: 2rem;">
 
-  <button onclick="buyNFT(1)">Buy NFT 1</button>
+      <!-- Main Content -->
+      <section class="nft-display-panel">
+        <!-- Filter buttons -->
+        <div class="nft-filters">
+          <!-- Sidebar -->
+          <aside class="category-panel">
+            <h3>Categories</h3>
+            <ul>
+              <button class="category" onclick="getTokenSpecificURI(1)" data-type="earth">Earth</button>
+              <button class="category" onclick="getTokenSpecificURI(4)" data-type="fire">Fire</button>
+              <button class="category" onclick="getTokenSpecificURI(7)" data-type="water">Water</button>
+              <button class="category" onclick="getTokenSpecificURI(10)" data-type="wind">Wind</button>
+              <button class="category" onclick="getTokenSpecificURI(13)" data-type="shadow">Shadow</button>
+              <button class="category" onclick="getTokenSpecificURI(19)" data-type="grass">Grass</button>
+              <button class="category" onclick="getTokenSpecificURI(22)" data-type="energy">Energy</button>
+            </ul>
+          </aside>
+        </div>
+        <!-- NFT Section -->
+        <div class="nft-carousel">
+          <div class="nft-card"></div>
+        </div>
+      </section>
+    </main>
 
-  <button onclick="ownerOf(1)">Owner of NFT 1</button>
+    <section class="DisplayNFT">
+      <h1>All NFT</h1>
+      <section class="DisplayNFT__container">
+      </section>
+    </section>
+  </div>
 
-  <h1>NFT BELOW ME!!</h1>
-  <div id="NFT_Container"></div>
+  <script src="/BegineerLuck_WebDev/public/SmartContract/SmartContract.js"></script>
+  <script src="<?= BASE_URL ?>Homepage/index.js"></script>
 </body>
-<script src="SmartContract.js"></script>
 
 </html>

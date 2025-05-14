@@ -12,12 +12,12 @@
     <main class="Profile_Outer">
         <div class="Profile_Container Sidebar">
             <div class="Profile_SidebarContent">
-                <ul>
-                    <li>ge</li>
-                    <li>ge</li>
-                    <li>ge</li>
-                    <li>ge</li>
-                </ul>
+
+                <button>Start Trade</button>
+                <button>Resell History</button>
+                <button>Trade History</button>
+                <button>Resell NFT</button>
+
             </div>
             <button id="Profile_LogoutButton">Log Out</button>
         </div>
