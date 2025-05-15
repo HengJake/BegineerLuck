@@ -21,8 +21,13 @@ Password: stickmanodyssey123
 METHOD 1:
 1.  Extract Final.zip
 2.  Move folder 'StickmanOdyssey' into xampp/htdocs
-3.  Run index.html in a web server
+3.  Ensure XAMPP is opened and start Apache and MySQL
+4.  Run index.html in a web server
+5.  Signup an account first and login to play the game
 
 METHOD 2:
 1.  Import finalgame.unitypackage into empty Unity project
-2.  Run the game
+2.  Assets > Project Settings > Player > WebGL > WebGLTemplate > MetaMaskTemplate
+3.  Ensure XAMPP is opened and start Apache and MySQL
+4.  Select Build and Run as WebGL
+5.  Signup an account first and login to play the game
