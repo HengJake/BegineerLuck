@@ -25,6 +25,51 @@ window.addEventListener("load", async () => {
         document.getElementById("STKM").innerHTML =
           "STKM : " + Math.round(stkmAmt);
 
+        // Display all the player
+        fetch("/BegineerLuck_WebDev/public/Homepage/retriveUser.php")
+          .then((res) => {
+            console.log("Response status:", res.status, res.statusText);
+            if (!res.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return res.text(); // Get raw text
+          })
+          .then((text) => {
+            console.log("Raw response text:", text);
+            try {
+              const users = JSON.parse(text); // Try parsing JSON
+              console.log("Parsed JSON:", users);
+
+              const container = document.getElementById("playerContainer");
+              container.innerHTML = ""; // Clear container before adding
+
+              users.forEach((user) => {
+                console.log("Processing user:", user);
+                const div = document.createElement("div");
+                div.className = "player";
+
+                div.innerHTML = `
+          <img src="${user.profile_pic}" alt="Profile Picture" class="profile-img" />
+          <p><strong>Username:</strong> ${user.username}</p>
+          <p><strong>Email:</strong> ${user.email}</p>
+          <p><strong>Wallet:</strong> ${user.wallet_address}</p>
+        `;
+
+                container.appendChild(div);
+              });
+            } catch (err) {
+              console.error(
+                "❌ JSON parsing failed:",
+                err,
+                "\nRaw response:",
+                text
+              );
+            }
+          })
+          .catch((err) => {
+            console.error("❌ Fetch failed:", err);
+          });
+
         // Init see if got trade or not
         // document.getElementById("TradeRequest").innerHTML = getPastTradeHistory()
       } else {
@@ -368,8 +413,19 @@ async function getTokenSpecificURI(
     const tokenURI = await contract.methods.getTokenURI(id).call();
     // console.log("Single Token URI:", tokenURI, "ID : ", id);
 
+    let ownerofNFT = await getNFTOwner(id);
+
     if (!displayInAll) {
-      readIPFSMetadata(tokenURI, 1, id);
+      if (
+        ownerofNFT.toLowerCase() === userAddress.toLowerCase() &&
+        !hasRecurred
+      ) {
+        console.log(id, "Is da owner of individual");
+        getTokenSpecificURI(id + 1, false, true);
+        return;
+      } else {
+        readIPFSMetadata(tokenURI, 1, id, true);
+      }
     } else {
       readIPFSMetadata(tokenURI, 0, id, hasRecurred);
     }
@@ -453,11 +509,15 @@ async function displaySingleNFT(metadata, id) {
   buyButton.textContent = "Buy NFT";
   buyButton.onclick = () => buyNFT(id);
 
-
   info.appendChild(name);
   info.appendChild(description);
 
-  wrapper.appendChild(buyButton);
+  let ownerofNFT = await getNFTOwner(id);
+
+  if (!(ownerofNFT.toLowerCase() === userAddress.toLowerCase())) {
+    wrapper.appendChild(buyButton);
+  }
+
   wrapper.appendChild(img);
   wrapper.appendChild(info);
   container.appendChild(wrapper);
@@ -520,9 +580,15 @@ async function displayNFT(metadata, id) {
   card.appendChild(idShowCase);
   // card.appendChild(desc);
   // card.appendChild(attrList);
-  card.appendChild(buyButton);
   card.appendChild(checkButton);
   card.appendChild(getOwner);
+
+  let ownerofNFT = await getNFTOwner(id);
+
+  // only add buy button if its not the owner
+  if (!(ownerofNFT.toLowerCase() === userAddress.toLowerCase())) {
+    card.appendChild(buyButton);
+  }
 
   container.appendChild(card);
 }
@@ -612,13 +678,10 @@ async function getLastRewardUpdateTime() {
  *
  */
 async function buyNFT(tokenId) {
-  
   return await contract.methods.BuyNFT(tokenId).send({
     from: userAddress,
   });
 }
-
-
 
 /**
  * @description user resell their NFT
@@ -695,11 +758,6 @@ document
       alert("❌ Trade failed. Check console for details.");
     }
   });
-
-// listen for any new trades
-contract.events.TradeStarted().on("data", (event) => {
-  console.log("New Trade:", event.returnValues);
-});
 
 /**
  * @description User B accept the trade

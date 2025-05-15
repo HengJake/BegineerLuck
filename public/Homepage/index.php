@@ -105,6 +105,9 @@
 
         <section class="TradeNFT">
             <h1>Trade NFT</h1>
+            <div id="playerContainer">
+
+            </div>
             <div>
                 <form id="tradeForm">
                     <label for="oAddress">Opponent Player address</label>

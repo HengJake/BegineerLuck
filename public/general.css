@@ -941,3 +941,21 @@ a:hover {
   background-color: var(--card-background);
   color: var(--extra-color-dark1);
 }
+
+/* display all player in marketplace */
+.player {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
