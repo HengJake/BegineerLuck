@@ -18,5 +18,10 @@ Username: test
 Password: stickmanodyssey123
 
 # installation step (game)
-
-1.  open index.html
+METHOD 1:
+1.  Extract Final.zip
+2.  Move folder 'StickmanOdyssey' into xampp/htdocs
+3.  Run index.html in a web server
+METHOD 2:
+1. Import finalgame.unitypackage into empty Unity project
+2. Run the game
