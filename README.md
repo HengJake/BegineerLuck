@@ -3,8 +3,8 @@
 ## installation step (marketplace)
 
 1. download XAMPP Control Panel and start apache and MySQL
-2. import database into PHPMyAdmin in browser (db provided in .sql)
-3. open the signup.php [here](http://localhost:8081/BegineerLuck_WebDev/public/LoginPage/Signup.php), or [this](http://localhost/BegineerLuck_WebDev/public/LoginPage/Signup.php) if not working
+2. import database into `PHPMyAdmin` in browser (db provided in `.sql` file)
+3. open the `signup.php` [here](http://localhost:8081/BegineerLuck_WebDev/public/LoginPage/Signup.php), or [this](http://localhost/BegineerLuck_WebDev/public/LoginPage/Signup.php) if not working
 4. Login with the provided test account below
 5. download and add Metamask to your extension (if havent already), then connect it to the site
 6. NFT should load when wallet connected 
