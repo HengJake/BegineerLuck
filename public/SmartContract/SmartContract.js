@@ -616,10 +616,22 @@ async function initWeb3() {
  *
  */
 async function buySTKM(amountInEther) {
-  const valueWei = web3.utils.toWei(amountInEther.toString(), "ether");
+  const valueWei = web3.utils.toWei(amountInEther.toString(), 'ether');
+
+  const gasPrice = await web3.eth.getGasPrice();
+  const gasLimit = await contract.methods.buySTKM().estimateGas({
+    from: userAddress,
+    value: valueWei,
+  });
+
+  console.log('Gas price:', web3.utils.fromWei(gasPrice, 'gwei'), 'gwei');
+  console.log('Gas limit:', gasLimit);
+
   return await contract.methods.buySTKM().send({
     from: userAddress,
     value: valueWei,
+    gas: gasLimit,
+    gasPrice,
   });
 }
 
@@ -629,9 +641,14 @@ async function buySTKM(amountInEther) {
  *
  */
 async function withdrawSTKM(amountInEther) {
-  const amountWei = web3.utils.toWei(amountInEther.toString(), "ether");
+  const amountWei = web3.utils.toWei(amountInEther.toString(), 'ether');
+  const gasPrice = await web3.eth.getGasPrice();
+  const gas = await contract.methods.withdrawSTKM(amountWei).estimateGas({ from: userAddress });
+
   return await contract.methods.withdrawSTKM(amountWei).send({
     from: userAddress,
+    gas,
+    gasPrice,
   });
 }
 
@@ -640,8 +657,13 @@ async function withdrawSTKM(amountInEther) {
  *
  */
 async function mintRewards() {
+  const gasPrice = await web3.eth.getGasPrice();
+  const gas = await contract.methods.MintAccruedRewards().estimateGas({ from: userAddress });
+
   return await contract.methods.MintAccruedRewards().send({
     from: userAddress,
+    gas,
+    gasPrice,
   });
 }
 
@@ -678,8 +700,13 @@ async function getLastRewardUpdateTime() {
  *
  */
 async function buyNFT(tokenId) {
+  const gasPrice = await web3.eth.getGasPrice();
+  const gas = await contract.methods.BuyNFT(tokenId).estimateGas({ from: userAddress });
+
   return await contract.methods.BuyNFT(tokenId).send({
     from: userAddress,
+    gas,
+    gasPrice,
   });
 }
 
@@ -690,8 +717,13 @@ async function buyNFT(tokenId) {
  *
  */
 async function resellNFT(tokenId, resellPrice) {
+  const gasPrice = await web3.eth.getGasPrice();
+  const gas = await contract.methods.ResellNFT(tokenId, resellPrice).estimateGas({ from: userAddress });
+
   return await contract.methods.ResellNFT(tokenId, resellPrice).send({
     from: userAddress,
+    gas,
+    gasPrice,
   });
 }
 
@@ -701,8 +733,13 @@ async function resellNFT(tokenId, resellPrice) {
  *
  */
 async function revokeResellNFT(tokenId) {
+  const gasPrice = await web3.eth.getGasPrice();
+  const gas = await contract.methods.RevokeResellNFT(tokenId).estimateGas({ from: userAddress });
+
   return await contract.methods.RevokeResellNFT(tokenId).send({
     from: userAddress,
+    gas,
+    gasPrice,
   });
 }
 
@@ -712,8 +749,13 @@ async function revokeResellNFT(tokenId) {
  *
  */
 async function buyResellNFT(tokenId) {
+  const gasPrice = await web3.eth.getGasPrice();
+  const gas = await contract.methods.BuyResellNFT(tokenId).estimateGas({ from: userAddress });
+
   return await contract.methods.BuyResellNFT(tokenId).send({
     from: userAddress,
+    gas,
+    gasPrice,
   });
 }
 
@@ -726,11 +768,16 @@ async function buyResellNFT(tokenId) {
  *
  */
 async function startTrade(opponentAddress, yourTokenId, opponentTokenId) {
-  return await contract.methods
-    .StartTrade(opponentAddress, yourTokenId, opponentTokenId)
-    .send({
-      from: userAddress,
-    });
+  const gasPrice = await web3.eth.getGasPrice();
+  const gas = await contract.methods.StartTrade(opponentAddress, yourTokenId, opponentTokenId).estimateGas({
+    from: userAddress
+  });
+
+  return await contract.methods.StartTrade(opponentAddress, yourTokenId, opponentTokenId).send({
+    from: userAddress,
+    gas,
+    gasPrice,
+  });
 }
 
 // initiate trade
@@ -766,8 +813,13 @@ document
  *
  */
 async function acceptTrade(tradeId, yourToken) {
+  const gasPrice = await web3.eth.getGasPrice();
+  const gas = await contract.methods.AcceptTrade(tradeId, yourToken).estimateGas({ from: userAddress });
+
   return await contract.methods.AcceptTrade(tradeId, yourToken).send({
     from: userAddress,
+    gas,
+    gasPrice,
   });
 }
 
@@ -778,8 +830,13 @@ async function acceptTrade(tradeId, yourToken) {
  *
  */
 async function rejectTrade(tradeId, yourToken) {
+  const gasPrice = await web3.eth.getGasPrice();
+  const gas = await contract.methods.RejectTrade(tradeId, yourToken).estimateGas({ from: userAddress });
+
   return await contract.methods.RejectTrade(tradeId, yourToken).send({
     from: userAddress,
+    gas,
+    gasPrice,
   });
 }
 
