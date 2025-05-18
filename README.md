@@ -30,4 +30,4 @@ Password: `stickmanodyssey123`
 
 ## Contract Source Code
 
-Click [here](https://github.com/yappy-yum/DeGame-Hackathon-May-2024) to view all of the backend smart contract source code, including all of the blockchain deployment details
+Click [here](https://github.com/yappy-yum/DeGame-Hackathon-May-2025) to view all of the backend smart contract source code, including all of the blockchain deployment details
